@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { callTypesDefault } from "../utils/initialStates";
 import { getCurrentMMSS } from "../utils/utilityFunctions";
+import "./callForm.css";
 
 export default function CallForm(props) {
 
@@ -61,6 +62,8 @@ export default function CallForm(props) {
 
     return <div id="hcad_callForm" onSubmit={handleSubmit}> 
 
+            {/* top section */}
+
         <div id="hcad_callForm_topdiv">
             <input id="hcad_callForm_addressinput" type="text" placeholder="address" value={address} onChange={(e) => changeStateThunk(e.target.value, setAddress)}></input>
         </div>
@@ -77,6 +80,8 @@ export default function CallForm(props) {
                 })}
             </select>
         </div>
+
+            {/* remarks section */}
 
         <div id="hcad_callform_remarksdiv">
             <div id="hcad_callform_remarksinputwrapper">
