@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { callTypesDefault } from "../utils/initialStates";
+import { getCurrentMMSS } from "../utils/utilityFunctions";
 
 export default function CallForm(props) {
     
@@ -12,29 +13,39 @@ export default function CallForm(props) {
     const [callTypeOptions, setCallTypeOptions] = useState(callTypesDefault);
     const [priority, setPriority] = useState(1);
     const [remarks, setRemarks] = useState([]);
+    const [remarkInProgress, setRemarkInProgress] = useState("");
     const [callerName, setCallerName] = useState("");
     const [callerPhone, setCallerPhone] = useState("");
     const [callerAddress, setCallerAddress] = useState("");
 
-    const changeStateThunk = (value, targetStateFunction) => {
+    function handleSubmit(e) {
+        e.preventDefault();
+    }
+
+    function changeStateThunk(value, targetStateFunction) {
         setHasNewDetails(true);
         targetStateFunction(value);
     }
 
-    const changeCallType = (e) => {
-        console.log(e.target.value);
+    function changeCallType(e) {
         setHasNewDetails(true);
         const defaultPriority = callTypeOptions.find(x => x.name === e.target.value).priority
-        console.log(defaultPriority);
         setCallType(e.target.value);
         setPriority(defaultPriority);
     }
 
-    const addRemark = (input) => {
-        setRemarks((prev) => [...prev, input]);
-    }    
+    function handleRemarkEnter({key}) { //runs on buttonpress in the remarks input element
+        if(/\S+/.test(remarkInProgress) && key === "Enter") {
+            addRemark(remarkInProgress);
+        }
+    }
 
-    const clearForm = (input) => {
+    function addRemark(input) {
+        setRemarks((prev) => [...prev, {text: input.trim(), time: getCurrentMMSS()}]); //potential timezone conflict
+        setRemarkInProgress("");
+    }
+
+    function clearForm(input) {
         setAddress("");
         setCallType("");
         setPriority("");
@@ -44,11 +55,11 @@ export default function CallForm(props) {
         setCallerAddress("");
     }
 
-    const submitForm = () => { //send details, recieve incident number, get call details
+    function submitForm() { //send details, recieve incident number, get call details
 
     }
 
-    return <form id="hcad_callForm"> 
+    return <div id="hcad_callForm" onSubmit={handleSubmit}> 
         <div id="hcad_callForm_topdiv">
             <input id="hcad_callForm_addressinput" type="text" placeholder="address" value={address} onChange={(e) => changeStateThunk(e.target.value, setAddress)}></input>
         </div>
@@ -64,5 +75,21 @@ export default function CallForm(props) {
                 })}
             </select>
         </div>
-    </form>
+        <div id="hcad_callform_remarksdiv">
+            <div id="hcad_callform_remarksinputwrapper">
+              <input id="hcad_callform_remarksinput" type="text" value={remarkInProgress} onChange={e => changeStateThunk(e.target.value, setRemarkInProgress)} onKeyDown={handleRemarkEnter}></input>
+              <button id="hcad_callform_remarksinputbtn" onClick={() => handleRemarkEnter({key :"Enter"})}>Add</button> {/*simulates an enter keypress*/}
+            </div>
+            <div id="hcad_callform_remarkslistwrapper">
+                <ul id="hcad_callform_remarkslist">
+                    {remarks.length === 0 ? null : remarks.map((x, i) => {
+                        return <li className="hcad_callform_remarkli" key={i}>
+                            <p className="hcad_callform_remarkli_text">{x.text}</p>
+                            <p className="hcad_callform_remarkli_time"></p>
+                        </li>
+                    })}
+                </ul>
+            </div>
+        </div>
+    </div>
 }
