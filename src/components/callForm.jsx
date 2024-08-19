@@ -3,7 +3,7 @@ import { callTypesDefault } from "../utils/initialStates";
 import { getCurrentMMSS } from "../utils/utilityFunctions";
 
 export default function CallForm(props) {
-    
+
     const [isNewCall, setIsNewCall] = useState(true);
     const [incidentNumber, setIncidentNumber] = useState("");
     const [hasNewDetails, setHasNewDetails] = useState(false);
@@ -60,9 +60,11 @@ export default function CallForm(props) {
     }
 
     return <div id="hcad_callForm" onSubmit={handleSubmit}> 
+
         <div id="hcad_callForm_topdiv">
             <input id="hcad_callForm_addressinput" type="text" placeholder="address" value={address} onChange={(e) => changeStateThunk(e.target.value, setAddress)}></input>
         </div>
+
         <div id="hcad_callform_typeprioritywrapper">
             <select id="hcad_callForm_calltypeselect" value={callType} onChange={changeCallType}>
                 {[...callTypeOptions].map((x, i) => {
@@ -75,6 +77,7 @@ export default function CallForm(props) {
                 })}
             </select>
         </div>
+
         <div id="hcad_callform_remarksdiv">
             <div id="hcad_callform_remarksinputwrapper">
               <input id="hcad_callform_remarksinput" type="text" value={remarkInProgress} onChange={e => changeStateThunk(e.target.value, setRemarkInProgress)} onKeyDown={handleRemarkEnter}></input>
@@ -91,5 +94,6 @@ export default function CallForm(props) {
                 </ul>
             </div>
         </div>
+
     </div>
 }
