@@ -39,7 +39,7 @@
     padding: 0.25rem;
 }
 
-.hcad_callform_remarkli:nth-child(odd) {
+.hcad_callform_remarkli:nth-child(even) {
     background-color: lightgray;
 }
 

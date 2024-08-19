@@ -1,6 +1,6 @@
 export const callTypesDefault = [
     {
-        name: "Assault",
+        name: "ASSAULT",
         priority: "1"
     },
     {
@@ -8,27 +8,27 @@ export const callTypesDefault = [
         priority: "1"
     },
     {
-        name: "Police Assistance",
+        name: "POLICE ASSIST",
         priority: "3"
     },
     {
-        name: "Theft",
+        name: "THEFT",
         priority: "2"
     },
     {
-        name: "Assist Fire/EMS",
+        name: "ASSIST FIRE/EMS",
         priority: "1"
     },
     {
-        name: "Traffic Complaint",
+        name: "TRAFFIC COMPLAINT",
         priority: "2"
     },
     {
-        name: "Domestic",
+        name: "DOMESTIC",
         priority: "0"
     },
     {
-        name: "Neighbour Dispute",
+        name: "NEIGHBOUR DISPUTE",
         priority: "1"
     },
 ];

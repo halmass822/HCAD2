@@ -25,7 +25,7 @@ export default function CallForm(props) {
 
     function changeStateThunk(value, targetStateFunction) {
         setHasNewDetails(true);
-        targetStateFunction(value);
+        targetStateFunction(value.toUpperCase());
     }
 
     function changeCallType(e) {
