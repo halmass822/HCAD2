@@ -1,4 +1,5 @@
-const { digitizeNumber } = require("../utils/utilityFunctions");
+import { createSlice } from "@reduxjs/toolkit";
+import { digitizeNumber } from "../utils/utilityFunctions";
 
 const callList = createSlice({
     name: "callList",
@@ -14,6 +15,7 @@ const callList = createSlice({
             let output_object = {incident_number: generated_incident_number};
             Object.assign(output_object, action.payload);
             state.calls[output_object];
+            return generated_incident_number;
         },
         editCall: (state, action)  => {
             state.calls[action.payload.incident_number] = action.payload;

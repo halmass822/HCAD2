@@ -2,8 +2,11 @@ import { useState } from "react";
 import { callTypesDefault } from "../utils/initialStates";
 import { getCurrentMMSS } from "../utils/utilityFunctions";
 import "./callForm.css";
+import { useDispatch } from "react-redux";
 
 export default function CallForm(props) {
+
+    const dispatch = useDispatch();
 
     const [callFormState, setCallFormState] = useState(true);
     const [incidentNumber, setIncidentNumber] = useState("");
@@ -21,6 +24,7 @@ export default function CallForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
+
     }
 
     function changeStateThunk(value, targetStateFunction) {
@@ -65,7 +69,7 @@ export default function CallForm(props) {
             {/* top section */}
 
         <div id="hcad_callForm_topdiv">
-            <input autocomplete="off" id="hcad_callForm_addressinput" type="text" placeholder="Address" value={address} onChange={(e) => changeStateThunk(e.target.value, setAddress)} ></input>
+            <input autocomplete="off" pattern="/\S+/" id="hcad_callForm_addressinput" type="text" placeholder="Address" value={address} onChange={(e) => changeStateThunk(e.target.value, setAddress)} ></input>
         </div>
 
         <div id="hcad_callform_typeprioritywrapper">
