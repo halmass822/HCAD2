@@ -5,7 +5,7 @@ import "./callForm.css";
 
 export default function CallForm(props) {
 
-    const [isNewCall, setIsNewCall] = useState(true);
+    const [callFormState, setCallFormState] = useState(true);
     const [incidentNumber, setIncidentNumber] = useState("");
     const [hasNewDetails, setHasNewDetails] = useState(false);
 
@@ -60,12 +60,12 @@ export default function CallForm(props) {
 
     }
 
-    return <div id="hcad_callForm" onSubmit={handleSubmit}> 
+    return <div id="hcad_callForm" onSubmit={handleSubmit} className="newCall"> 
 
             {/* top section */}
 
         <div id="hcad_callForm_topdiv">
-            <input id="hcad_callForm_addressinput" type="text" placeholder="address" value={address} onChange={(e) => changeStateThunk(e.target.value, setAddress)}></input>
+            <input autocomplete="off" id="hcad_callForm_addressinput" type="text" placeholder="Address" value={address} onChange={(e) => changeStateThunk(e.target.value, setAddress)} ></input>
         </div>
 
         <div id="hcad_callform_typeprioritywrapper">
@@ -85,7 +85,7 @@ export default function CallForm(props) {
 
         <div id="hcad_callform_remarksdiv">
             <div id="hcad_callform_remarksinputwrapper">
-              <input id="hcad_callform_remarksinput" type="text" value={remarkInProgress} onChange={e => changeStateThunk(e.target.value, setRemarkInProgress)} onKeyDown={handleRemarkEnter}></input>
+              <input autocomplete="off" id="hcad_callform_remarksinput" type="text" value={remarkInProgress} onChange={e => changeStateThunk(e.target.value, setRemarkInProgress)} onKeyDown={handleRemarkEnter} placeholder="Enter Remark"></input>
               <button id="hcad_callform_remarksinputbtn" onClick={() => handleRemarkEnter({key :"Enter"})}>Add</button> {/*simulates an enter keypress*/}
             </div>
             <div id="hcad_callform_remarkslistwrapper">
@@ -103,11 +103,12 @@ export default function CallForm(props) {
             {/* caller section */}
 
         <div id="hcad_callform_callerdiv">
-            <div id="hcad_callerform_callerdiv_top">
-                <input type="text" value={callerName} placeholder="caller name" onChange={(e) => changeStateThunk(e.target.value, setCallerName)}></input>
-                <input type="text" value={callerPhone} placeholder="caller phone" onChange={(e) => changeStateThunk(e.target.value, setCallerPhone)}></input>
+            <div id="hcad_callform_callerdiv_top">
+                <input autocomplete="off" id="hcad_callform_callername" type="text" value={callerName} placeholder="Caller Name" onChange={(e) => changeStateThunk(e.target.value, setCallerName)}></input>
+                <input autocomplete="off" id="hcad_callform_callerphone" type="text" value={callerPhone} placeholder="Caller Phone" onChange={(e) => changeStateThunk(e.target.value, setCallerPhone)}></input>
             </div>
-            <input type="text" value={callerAddress} placeholder="caller address" onChange={(e) => changeStateThunk(e.target.value, setCallerAddress)}></input>
+            <input autocomplete="off" id="hcad_callform_calleraddress" type="text" value={callerAddress} placeholder="Caller Address" onChange={(e) => changeStateThunk(e.target.value, setCallerAddress)}></input>
+            <button type="submit" onClick={handleSubmit} id="hcad_callform_submitbtn">ENTER CALL</button>
         </div>
 
     </div>

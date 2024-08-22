@@ -1,3 +1,29 @@
+#hcad_callForm {
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 400px;
+}
+
+#hcad_callForm input {
+    height: 1.5rem;
+    font-size: 15;
+    
+}
+
+.newCall {
+    border: 2px solid black;
+}
+
+.updatingCall {
+    border: 2px solid red;
+}
+
+.viewingCall {
+    border: 2px solid blue;
+}
+
+/* top */
+
 #hcad_callForm_topdiv {
     display: flex;
 }
@@ -5,6 +31,12 @@
 #hcad_callForm_addressinput {
     flex-grow: 1;
 }
+
+#hcad_callForm_priorityselect {
+    margin-left: 1rem;
+}
+
+/* remarks */
 
 #hcad_callform_remarksdiv {
     display: flex;
@@ -46,4 +78,32 @@
 .hcad_callform_remarkli_text, .hcad_callform_remarkli_time {
     padding: 0;
     margin: 0;
+}
+
+/* caller section */
+
+#hcad_callform_callerdiv {
+    display: flex;
+    flex-flow: column;
+}
+
+#hcad_callform_callerdiv_top {
+    display: flex;
+}
+
+#hcad_callform_callername {
+    flex-grow: 1;
+}
+
+#hcad_callform_callerphone {
+    width: 8rem;
+}
+
+#hcad_callform_calleraddress {
+    flex-grow: 1;
+}
+
+#hcad_callform_submitbtn {
+    background-color: rgb(255, 230, 183);
+    cursor: pointer;
 }
