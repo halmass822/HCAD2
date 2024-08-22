@@ -12,7 +12,7 @@ const callList = createSlice({
             const currentDate = new Date();
             const generated_incident_number = String(currentDate.getFullYear()).slice(2) + digitizeNumber(state.next_incident_num, 4);
             state.next_incident_num = state.next_incident_num + 1;
-            let output_object = {incident_number: generated_incident_number};
+            let output_object = {incident_number: generated_incident_number, date_created: currentDate.getTime(), assigned_units: []};
             Object.assign(output_object, action.payload);
             state.calls[generated_incident_number] = output_object;
             console.table(output_object);
