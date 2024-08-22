@@ -1,36 +1,27 @@
+const { digitizeNumber } = require("../utils/utilityFunctions");
+
 const callList = createSlice({
     name: "callList",
     initialState: {
-        address: "",
-        callType: "",
-        priority: 1,
-        remarks: [],
-        callerName: "",
-        callerPhone: "",
-        callerAddress: ""
+        next_incident_num: 1,
+        calls: []
     },
     reducers: {
-        setAddress: (state, action) => {
-            state.address = action.payload;
+        createCall: (state, action) => {
+            const currentDate = new Date();
+            const generated_incident_number = String(currentDate.getFullYear()).slice(2) + digitizeNumber(next_incident_num, 4);
+            state.next_incident_num++;
+            let output_object = {incident_number: generated_incident_number};
+            Object.assign(output_object, action.payload);
+            state.calls[output_object];
         },
-        setCallType: (state, action) => {
-            state.callType = action.payload;
-        },
-        setPriority: (state, action) => {
-            state.priority = action.payload;
-        },
-        addRemark: (state, action) => {
-            state.remarks = [...state.remarks, action.payload];
-        },
-        setCallerName: (state, action) => {
-            state.callerName = action.payload;
-        },
-        setCallerPhone: (state, action) => {
-            state.callerPhone = action.payload;
-        },
-        setCallerAddress: (state, action) => {
-            state.callerAddress = action.payload;
-        },
+        editCall: (state, action)  => {
+            state.calls[action.payload.incident_number] = action.payload;
+        }
     }
 });
 
+export const selectCalls = (state) => state.callList.calls;
+export const selectSpecificCall = (state, target_incident_number) => state.callList.calls[target_incident_number];
+
+export default callList.reducer;
