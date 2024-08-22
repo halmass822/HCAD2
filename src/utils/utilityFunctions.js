@@ -1,7 +1,9 @@
 export function digitizeNumber(input, digits = 2) {
 	const length_difference = digits - String(input).length;
-  if(length_difference < 1) {
+  if(length_difference < 0) {
   	throw `digitize(${input}, ${digits}) error\ninput longer than target digits`
+  } else if(length_difference === 0) {
+    return input;
   } else {
   	let output = String(input);
   	for(let i = 0; i < length_difference; i++) {
@@ -13,6 +15,6 @@ export function digitizeNumber(input, digits = 2) {
 
 export const getCurrentMMSS = () => {
     const currentTime = new Date();
-    return `${digitizeNumber(currentTime.getMinutes())}:${digitizeNumber(currentTime.getSeconds)}`;
+    return `${digitizeNumber(currentTime.getMinutes())}:${digitizeNumber(currentTime.getSeconds())}`;
 }
 
