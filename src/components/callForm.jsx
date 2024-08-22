@@ -3,6 +3,7 @@ import { callTypesDefault } from "../utils/initialStates";
 import { getCurrentMMSS } from "../utils/utilityFunctions";
 import "./callForm.css";
 import { useDispatch } from "react-redux";
+import { createCall } from "../features/callFormSlice";
 
 export default function CallForm(props) {
 
@@ -24,7 +25,20 @@ export default function CallForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-
+        if(address === "") {
+            alert("Address required!");
+        } else {
+            const generated_inc_num = dispatch(createCall({
+                address: address,
+                callType: callType,
+                priority: priority,
+                remarks: remarks,
+                callerName: callerName,
+                callerPhone: callerPhone,
+                callerAddress: callerAddress
+            }));
+            console.log(generated_inc_num);
+        }
     }
 
     function changeStateThunk(value, targetStateFunction) {
@@ -58,10 +72,6 @@ export default function CallForm(props) {
         setCallerName("");
         setCallerPhone("");
         setCallerAddress("");
-    }
-
-    function submitForm() { //send details, recieve incident number, get call details
-
     }
 
     return <div id="hcad_callForm" onSubmit={handleSubmit} className="newCall"> 

@@ -15,6 +15,7 @@ const callList = createSlice({
             let output_object = {incident_number: generated_incident_number};
             Object.assign(output_object, action.payload);
             state.calls[output_object];
+            console.table(output_object);
             return generated_incident_number;
         },
         editCall: (state, action)  => {
@@ -25,5 +26,7 @@ const callList = createSlice({
 
 export const selectCalls = (state) => state.callList.calls;
 export const selectSpecificCall = (state, target_incident_number) => state.callList.calls[target_incident_number];
+
+export const {createCall, editCall} = callList.actions;
 
 export default callList.reducer;
