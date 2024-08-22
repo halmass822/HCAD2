@@ -1,5 +1,7 @@
-const { useSelector } = require("react-redux")
-const { selectCalls } = require("../features/callFormSlice")
+import CallRow from "./CallRow";
+
+import { useSelector } from "react-redux";
+import { selectCalls } from "../features/callFormSlice";
 
 export default function CallList() {
     
@@ -10,6 +12,7 @@ export default function CallList() {
             <tr>
                 <th>Priority</th>
                 <th>Pending</th>
+                <th>Type</th>
                 <th>Address</th>
                 <th>Number</th>
                 <th>Units</th>
@@ -17,8 +20,8 @@ export default function CallList() {
         </thead>
         <tbody>
             {calls.map((x, i) => {
-                //unit row component
+                <CallRow key={i} callDetails={x} />
             })}
         </tbody>
     </table>
-}
+};

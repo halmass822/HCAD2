@@ -15,7 +15,6 @@ const callList = createSlice({
             let output_object = {incident_number: generated_incident_number, date_created: currentDate.getTime(), assigned_units: []};
             Object.assign(output_object, action.payload);
             state.calls[generated_incident_number] = output_object;
-            console.table(output_object);
         },
         editCall: (state, action)  => {
             state.calls[action.payload.incident_number] = action.payload;

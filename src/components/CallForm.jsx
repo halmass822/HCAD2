@@ -37,7 +37,6 @@ export default function CallForm(props) {
                 callerPhone: callerPhone,
                 callerAddress: callerAddress
             }));
-            console.log(generated_inc_num);
         }
     }
 
