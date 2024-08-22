@@ -4,7 +4,7 @@ export function digitizeNumber(input, digits = 2) {
   	throw `digitize(${input}, ${digits}) error\ninput longer than target digits`
   } else {
   	let output = String(input);
-  	for(i = 0; i < length_difference; i++) {
+  	for(let i = 0; i < length_difference; i++) {
     	output = "0" + output;
     }
     return output;

@@ -14,8 +14,8 @@ export default function CallForm(props) {
     const [hasNewDetails, setHasNewDetails] = useState(false);
 
     const [address, setAddress] = useState("");
-    const [callType, setCallType] = useState("");
     const [callTypeOptions, setCallTypeOptions] = useState(callTypesDefault);
+    const [callType, setCallType] = useState("");
     const [priority, setPriority] = useState(1);
     const [remarks, setRemarks] = useState([]);
     const [remarkInProgress, setRemarkInProgress] = useState("");

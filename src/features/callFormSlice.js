@@ -10,13 +10,12 @@ const callList = createSlice({
     reducers: {
         createCall: (state, action) => {
             const currentDate = new Date();
-            const generated_incident_number = String(currentDate.getFullYear()).slice(2) + digitizeNumber(next_incident_num, 4);
-            state.next_incident_num++;
+            const generated_incident_number = String(currentDate.getFullYear()).slice(2) + digitizeNumber(state.next_incident_num, 4);
+            state.next_incident_num = state.next_incident_num + 1;
             let output_object = {incident_number: generated_incident_number};
             Object.assign(output_object, action.payload);
-            state.calls[output_object];
+            state.calls[generated_incident_number] = output_object;
             console.table(output_object);
-            return generated_incident_number;
         },
         editCall: (state, action)  => {
             state.calls[action.payload.incident_number] = action.payload;
