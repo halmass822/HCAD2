@@ -28,7 +28,7 @@ export default function CallForm(props) {
         if(address === "") {
             alert("Address required!");
         } else {
-            const generated_inc_num = dispatch(createCall({
+            dispatch(createCall({
                 address: address,
                 callType: callType,
                 priority: priority,
