@@ -14,10 +14,11 @@ const callList = createSlice({
             state.next_incident_num = state.next_incident_num + 1;
             let output_object = {incident_number: generated_incident_number, date_created: currentDate.getTime(), assigned_units: []};
             Object.assign(output_object, action.payload);
-            state.calls[generated_incident_number] = output_object;
+            state.calls = [...state.calls, output_object];
         },
-        editCall: (state, action)  => {
-            state.calls[action.payload.incident_number] = action.payload;
+        editCall: (state, action) => {
+            const target_index = state.calls.findIndex(({incident_number}) => incident_number === action.payload.incident_number);
+            state.calls[target_index] = action.payload;
         }
     }
 });
