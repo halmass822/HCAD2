@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { callTypesDefault } from "../utils/initialStates";
 import { getCurrentMMSS } from "../utils/utilityFunctions";
-import "./callForm.css";
+import "./CallForm.css";
 import { useDispatch } from "react-redux";
 import { createCall } from "../features/callFormSlice";
 
