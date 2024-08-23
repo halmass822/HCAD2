@@ -7,7 +7,7 @@ export default function CallRow(props) {
 
     useEffect(() => {
         const intervalid = setInterval(() => {
-            setPending(getMMSS(Date.now() - props.callDetails.date_created));
+            setPending(getMMSS(Date.now() - props.callDetails.dateCreated));
         }, 1000);
         return () => clearInterval(intervalid);
     }, [])
@@ -17,7 +17,7 @@ export default function CallRow(props) {
         <td>{pending}</td>
         <td>{props.callDetails.callType}</td>
         <td className="hcad_callrow_td_address">{props.callDetails.address}</td>
-        <td>{props.callDetails.incident_number}</td>
-        <td className="hcad_callrow_td_units">{props.callDetails.assigned_units.join(", ")}</td>
+        <td>{props.callDetails.incidentNumber}</td>
+        <td className="hcad_callrow_td_units">{props.callDetails.assignedUnits.join(", ")}</td>
     </tr>
 }

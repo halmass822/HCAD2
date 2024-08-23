@@ -4,27 +4,27 @@ import { digitizeNumber } from "../utils/utilityFunctions";
 const callList = createSlice({
     name: "callList",
     initialState: {
-        next_incident_num: 1,
+        nextIncidentNumber: 1,
         calls: []
     },
     reducers: {
         createCall: (state, action) => {
             const currentDate = new Date();
-            const generated_incident_number = String(currentDate.getFullYear()).slice(2) + digitizeNumber(state.next_incident_num, 4);
-            state.next_incident_num = state.next_incident_num + 1;
-            let output_object = {incident_number: generated_incident_number, date_created: currentDate.getTime(), assigned_units: []};
-            Object.assign(output_object, action.payload);
-            state.calls = [...state.calls, output_object];
+            const generatedIncidentNumber = String(currentDate.getFullYear()).slice(2) + digitizeNumber(state.nextIncidentNumber, 4);
+            state.nextIncidentNumber = state.nextIncidentNumber + 1;
+            let outputObject = {incidentNumber: generatedIncidentNumber, dateCreated: currentDate.getTime(), assignedUnits: []};
+            Object.assign(outputObject, action.payload);
+            state.calls = [...state.calls, outputObject];
         },
         editCall: (state, action) => {
-            const target_index = state.calls.findIndex(({incident_number}) => incident_number === action.payload.incident_number);
+            const target_index = state.calls.findIndex(({incidentNumber}) => incidentNumber === action.payload.incidentNumber);
             state.calls[target_index] = action.payload;
         }
     }
 });
 
 export const selectCalls = (state) => state.callList.calls;
-export const selectSpecificCall = (state, target_incident_number) => state.callList.calls[target_incident_number];
+export const selectSpecificCall = (state, target_incidentNumber) => state.callList.calls[target_incidentNumber];
 
 export const {createCall, editCall} = callList.actions;
 
