@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { callTypesDefault } from "../utils/initialStates";
-import { getCurrentMMSS } from "../utils/utilityFunctions";
+import { getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch } from "react-redux";
 import { createCall } from "../features/callFormSlice";
@@ -59,7 +59,7 @@ export default function CallForm(props) {
     }
 
     function addRemark(input) {
-        setRemarks((prev) => [...prev, {text: input.trim(), time: getCurrentMMSS()}]); //potential timezone conflict
+        setRemarks((prev) => [...prev, {text: input.trim(), time: getMMSS()}]); //potential timezone conflict
         setRemarkInProgress("");
     }
 

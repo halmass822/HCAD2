@@ -5,6 +5,6 @@ export default function CallRow(props) {
         <td>{props.callDetails.callType}</td>
         <td>{props.callDetails.address}</td>
         <td>{props.callDetails.incident_number}</td>
-        <td>{props.callDetails.assigned_units.map((x) => <p className="hcad_calllist_unit">{x}</p>)}</td>
+        <td>{props.callDetails.assigned_units.map((x, i) => <p key={i} className="hcad_calllist_unit">{x}</p>)}</td>
     </tr>
 }

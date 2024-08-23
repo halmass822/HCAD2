@@ -13,8 +13,8 @@ export function digitizeNumber(input, digits = 2) {
   }
 }
 
-export const getCurrentMMSS = () => {
-    const currentTime = new Date();
+export const getMMSS = (input = "now") => {
+    const currentTime = input ==="now" ? new Date() : new Date(input);
     return `${digitizeNumber(currentTime.getMinutes())}:${digitizeNumber(currentTime.getSeconds())}`;
 }
 
