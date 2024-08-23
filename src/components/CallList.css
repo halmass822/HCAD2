@@ -1,0 +1,32 @@
+#hcad_calllist_table {
+    min-width: 600px;
+    table-layout: fixed;
+    overflow: hidden;
+    width: 100%;
+}
+
+#hcad_calllist_table th, #hcad_calllist_table td {
+    text-align: center;
+    overflow: hidden;
+}
+
+#hcad_calllist_th_priority, #hcad_calllist_th_pending {
+    width: 80px;
+}
+
+#hcad_calllist_th_type {
+    width: 225px;
+}
+
+#hcad_calllist_th_number {
+    width: 80px;
+}
+
+#hcad_calllist_th_units {
+    width: 100px;
+}
+
+.hcad_callrow_td_address, .hcad_callrow_td_units p {
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+}

@@ -16,8 +16,8 @@ export default function CallRow(props) {
         <td>{props.callDetails.priority}</td>
         <td>{pending}</td>
         <td>{props.callDetails.callType}</td>
-        <td>{props.callDetails.address}</td>
+        <td className="hcad_callrow_td_address">{props.callDetails.address}</td>
         <td>{props.callDetails.incident_number}</td>
-        <td>{props.callDetails.assigned_units.map((x, i) => <p key={i} className="hcad_calllist_unit">{x}</p>)}</td>
+        <td className="hcad_callrow_td_units">{props.callDetails.assigned_units.join(", ")}</td>
     </tr>
 }
