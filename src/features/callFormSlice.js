@@ -5,13 +5,7 @@ const callList = createSlice({
     name: "callList",
     initialState: {
         next_incident_num: 1,
-        calls: [{
-            priority: 1,
-            callType: "Assault",
-            address: "123 Main",
-            incident_number: "240001",
-            assigned_units: ["101", "102"]
-        }]
+        calls: []
     },
     reducers: {
         createCall: (state, action) => {
