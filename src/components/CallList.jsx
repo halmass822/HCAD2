@@ -28,7 +28,7 @@ export default function CallList() {
         </thead>
         <tbody>
             {calls.map((x, i) => {
-                <CallRow key={i} callDetails={x} />
+                return <CallRow key={i} callDetails={x} />
             })}
         </tbody>
     </table>
