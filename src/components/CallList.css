@@ -1,13 +1,15 @@
 #hcad_calllist_table_wrapper {
     overflow-y: scroll;
+    height: 435px;
     display: inline-block;
     border: 2px solid black;
-    height: 100%;
+    border-collapse: collapse;
 }
 
 #hcad_calllist_table {
     table-layout: fixed;
     border-collapse: collapse;
+    overflow-y: scroll;
 }
 
 #hcad_calllist_table thead {

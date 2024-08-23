@@ -4,9 +4,14 @@ import CallList from './components/CallList';
 
 
 function App() {
-  return <div>
-    <CallForm />
-    <CallList />
+  return <div id="hcad_app">
+    <div id="hcad_topdiv">
+      <CallForm />
+      <CallList />
+    </div>
+    <div id="hcad_bottomdiv">
+
+    </div>
     </div>
 }
 

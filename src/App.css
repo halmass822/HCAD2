@@ -1,0 +1,15 @@
+#hcad_topdiv {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-grow: 1;
+}
+
+#hcad_app {
+    display: flex;
+    flex-flow: column;
+}
+
+#hcad_bottomdiv {
+    flex-grow: 1;
+}
