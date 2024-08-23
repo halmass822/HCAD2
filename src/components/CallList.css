@@ -1,6 +1,22 @@
+#hcad_calllist_table_wrapper {
+    overflow-y: scroll;
+    display: inline-block;
+    border: 2px solid black;
+    height: 100%;
+}
+
 #hcad_calllist_table {
     table-layout: fixed;
-    overflow: hidden;
+    border-collapse: collapse;
+}
+
+#hcad_calllist_table thead {
+    color: white;
+    background-color: gray;
+}
+
+#hcad_calllist_table tr {
+    border-bottom: 1px solid black;
 }
 
 #hcad_calllist_table th, #hcad_calllist_table td {

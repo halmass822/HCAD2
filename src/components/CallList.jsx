@@ -9,7 +9,7 @@ export default function CallList() {
     
     const calls = useSelector(selectCalls);
     
-    return <div className="hcad_calllist_table_wrapper">
+    return <div id="hcad_calllist_table_wrapper">
         <table id="hcad_calllist_table">
         <thead>
                 <tr>
