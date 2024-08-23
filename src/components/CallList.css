@@ -1,8 +1,6 @@
 #hcad_calllist_table {
-    min-width: 600px;
     table-layout: fixed;
     overflow: hidden;
-    width: 100%;
 }
 
 #hcad_calllist_table th, #hcad_calllist_table td {
@@ -16,6 +14,10 @@
 
 #hcad_calllist_th_type {
     width: 225px;
+}
+
+#hcad_calllist_th_address {
+    width: 300px;
 }
 
 #hcad_calllist_th_number {
