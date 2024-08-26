@@ -4,6 +4,7 @@ import { getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch } from "react-redux";
 import { createCall } from "../features/callFormSlice";
+import CallFormOverlay from "./CallFormOverlay";
 
 export default function CallForm(props) {
 
@@ -12,6 +13,7 @@ export default function CallForm(props) {
     const [callFormState, setCallFormState] = useState(true);
     const [incidentNumber, setIncidentNumber] = useState("");
     const [hasNewDetails, setHasNewDetails] = useState(false);
+    const [overlayState, setOverlayState] = useState(false);
 
     const [address, setAddress] = useState("");
     const [callTypeOptions, setCallTypeOptions] = useState(callTypesDefault);
@@ -55,6 +57,7 @@ export default function CallForm(props) {
     function handleRemarkEnter({key}) { //runs on buttonpress in the remarks input element
         if(/\S+/.test(remarkInProgress) && key === "Enter") {
             addRemark(remarkInProgress);
+            setHasNewDetails(true);
         }
     }
 
@@ -64,6 +67,9 @@ export default function CallForm(props) {
     }
 
     function clearForm(input) {
+        if(hasNewDetails) {
+
+        }
         setAddress("");
         setCallType("");
         setPriority("");
@@ -71,9 +77,12 @@ export default function CallForm(props) {
         setCallerName("");
         setCallerPhone("");
         setCallerAddress("");
+        setHasNewDetails(false);
     }
 
     return <div id="hcad_callForm" onSubmit={handleSubmit} className="newCall"> 
+
+        <CallFormOverlay overlayState={overlayState} />
 
             {/* top section */}
 

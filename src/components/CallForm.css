@@ -66,6 +66,7 @@
 
 .hcad_callform_remarkli {
     padding: 0.25rem;
+    text-wrap: wrap;
 }
 
 .hcad_callform_remarkli:nth-child(even) {
@@ -107,4 +108,34 @@
 
 #hcad_callform_submitbtn:hover {
     background-color: rgb(241, 216, 169);
+}
+
+#hcad_callformoverlay_wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+#hcad_callformoverlay {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    position: absolute;
+    top: 15%;
+    padding: 0.5rem;
+    border: 2px solid black;
+    border-radius: 1rem;
+    background-color: lightgray
+}
+
+#hcad_callformoverlay {
+    text-wrap: nowrap;
+}
+
+#hcad_callformoverlay_buttonwrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    
 }
