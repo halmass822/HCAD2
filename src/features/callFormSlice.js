@@ -7,6 +7,7 @@ const callList = createSlice({
         nextIncidentNumber: 1,
         calls: [],
         lastCreatedCall: "",
+        formState: "create",
         loadedCall: { //initial blank state for the form
             remarks: []
         } //stores the call details to switch to, used to confirm / cancel callform clearing
@@ -37,6 +38,9 @@ const callList = createSlice({
             state.calls = [...state.calls, outputObject];
             state.lastCreatedCall = outputObject;
         },
+        setFormState: (state, action) => {
+            state.formState = action.payload
+        },
         editCall: (state, action) => {
             const target_index = state.calls.findIndex(({incidentNumber}) => incidentNumber === action.payload.incidentNumber);
             state.calls[target_index] = action.payload;
@@ -51,7 +55,8 @@ export const selectCalls = (state) => state.callList.calls;
 export const selectSpecificCall = (state, action) => state.callList.calls.find((x) => x.incidentNumber === action.payload);
 export const selectLastCreatedCall = (state) => state.callList.lastCreatedCall;
 export const selectLoadedCall = (state) => state.callList.loadedCall;
+export const selectFormState = (state) => state.callList.formState;
 
-export const {createCall, editCall, loadCall} = callList.actions;
+export const {createCall, editCall, loadCall, setFormState} = callList.actions;
 
 export default callList.reducer;

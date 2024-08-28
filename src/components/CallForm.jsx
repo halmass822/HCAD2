@@ -3,7 +3,7 @@ import { callTypesDefault } from "../utils/initialStates";
 import { getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createCall, selectLoadedCall } from "../features/callFormSlice";
+import { createCall, selectFormState, selectLoadedCall, setFormState } from "../features/callFormSlice";
 import CallFormOverlay from "./CallFormOverlay";
 
 export default function CallForm(props) {
@@ -13,7 +13,7 @@ export default function CallForm(props) {
     const [incidentNumber, setIncidentNumber] = useState("");
     const [hasNewDetails, setHasNewDetails] = useState(false);
     const [overlayState, setOverlayState] = useState(false);
-    const [formState, setFormState] = useState("create");
+    const formState = useSelector(selectFormState);
 
     const [address, setAddress] = useState("");
     const [callTypeOptions, setCallTypeOptions] = useState(callTypesDefault);
@@ -93,7 +93,7 @@ export default function CallForm(props) {
     }
 
     function handleRadioClick(e) {
-        setFormState(e.target.value);
+        dispatch(setFormState(e.target.value));
     }
 
     useEffect(() => { 
