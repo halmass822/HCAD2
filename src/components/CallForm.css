@@ -21,8 +21,23 @@
 
 /* top */
 
+#hcad_callform_radiodiv {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.hcad_callform_radio {
+    margin: 0 10px 0 5px;
+}
+
+#hcad_callform_incidentNumber {
+    flex-grow: 1;
+}
+
 #hcad_callForm_topdiv {
     display: flex;
+    flex-flow: column;
 }
 
 #hcad_callForm_addressinput {

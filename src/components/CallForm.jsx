@@ -13,6 +13,7 @@ export default function CallForm(props) {
     const [incidentNumber, setIncidentNumber] = useState("");
     const [hasNewDetails, setHasNewDetails] = useState(false);
     const [overlayState, setOverlayState] = useState(false);
+    const [formState, setFormState] = useState("create");
 
     const [address, setAddress] = useState("");
     const [callTypeOptions, setCallTypeOptions] = useState(callTypesDefault);
@@ -91,6 +92,10 @@ export default function CallForm(props) {
         setCallerAddress(loadedCall.callerAddress);
     }
 
+    function handleRadioClick(e) {
+        setFormState(e.target.value);
+    }
+
     useEffect(() => { 
         if(hasNewDetails) {
             setOverlayState(true);
@@ -113,18 +118,28 @@ export default function CallForm(props) {
         <CallFormOverlay overlayState={overlayState} proceedButton={confirmFormChange} cancelButton={cancelFormChange}/>
 
             {/* top section */}
-
+        
         <div id="hcad_callForm_topdiv">
-            <input autoComplete="off" pattern="/\S+/" id="hcad_callForm_addressinput" type="text" placeholder="Address" value={address} onChange={(e) => changeStateThunk(e.target.value, setAddress)} ></input>
+            <div id="hcad_callform_radiodiv">
+                <label>Create</label>
+                <input type="radio" className="hcad_callform_radio" value="create" checked={formState === "create"} onChange={handleRadioClick}></input>
+                <label>Update</label>
+                <input type="radio" className="hcad_callform_radio" value="update" checked={formState === "update"} onChange={handleRadioClick}></input>
+                <label>Select</label>
+                <input type="radio" className="hcad_callform_radio" value="select" checked={formState === "select"} onChange={handleRadioClick}></input>
+                <input type="text" id="hcad_callform_incidentNumber" disabled={true} value={incidentNumber}></input>
+            </div>
+
+            <input disabled={formState === "select" ? "disabled" : ""} autoComplete="off" pattern="/\S+/" id="hcad_callForm_addressinput" type="text" placeholder="Address" value={address} onChange={(e) => changeStateThunk(e.target.value, setAddress)}></input>
         </div>
 
         <div id="hcad_callform_typeprioritywrapper">
-            <select id="hcad_callForm_calltypeselect" value={callType} onChange={changeCallType}>
+            <select disabled={formState === "select" ? "disabled" : ""} id="hcad_callForm_calltypeselect" value={callType} onChange={changeCallType}>
                 {[...callTypeOptions].map((x, i) => {
                     return <option key={i} value={x.name}>{x.name}</option>
                 })}
             </select>
-            <select id="hcad_callForm_priorityselect" value={priority} onChange={e => changeStateThunk(e.target.value, setPriority)}>
+            <select disabled={formState === "select" ? "disabled" : ""} id="hcad_callForm_priorityselect" value={priority} onChange={e => changeStateThunk(e.target.value, setPriority)}>
                 {["0", "1", "2", "3"].map((x, i) => {
                     return <option key={i} value={x}>{x}</option>
                 })}
@@ -154,11 +169,11 @@ export default function CallForm(props) {
 
         <div id="hcad_callform_callerdiv">
             <div id="hcad_callform_callerdiv_top">
-                <input autoComplete="off" id="hcad_callform_callername" type="text" value={callerName} placeholder="Caller Name" onChange={(e) => changeStateThunk(e.target.value, setCallerName)}></input>
-                <input autoComplete="off" id="hcad_callform_callerphone" type="text" value={callerPhone} placeholder="Caller Phone" onChange={(e) => changeStateThunk(e.target.value, setCallerPhone)}></input>
+                <input disabled={formState === "select" ? "disabled" : ""} autoComplete="off" id="hcad_callform_callername" type="text" value={callerName} placeholder="Caller Name" onChange={(e) => changeStateThunk(e.target.value, setCallerName)}></input>
+                <input disabled={formState === "select" ? "disabled" : ""} autoComplete="off" id="hcad_callform_callerphone" type="text" value={callerPhone} placeholder="Caller Phone" onChange={(e) => changeStateThunk(e.target.value, setCallerPhone)}></input>
             </div>
-            <input autoComplete="off" id="hcad_callform_calleraddress" type="text" value={callerAddress} placeholder="Caller Address" onChange={(e) => changeStateThunk(e.target.value, setCallerAddress)}></input>
-            <button type="submit" onClick={handleSubmit} id="hcad_callform_submitbtn">ENTER CALL</button>
+            <input disabled={formState === "select" ? "disabled" : ""} autoComplete="off" id="hcad_callform_calleraddress" type="text" value={callerAddress} placeholder="Caller Address" onChange={(e) => changeStateThunk(e.target.value, setCallerAddress)}></input>
+            <button disabled={formState === "select" ? "disabled" : ""} type="submit" onClick={handleSubmit} id="hcad_callform_submitbtn">{formState === "update" ? "UPDATE" : "ENTER"} CALL</button>
         </div>
 
     </div>
