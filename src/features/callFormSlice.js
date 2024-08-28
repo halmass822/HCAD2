@@ -6,7 +6,6 @@ const callList = createSlice({
     initialState: {
         nextIncidentNumber: 1,
         calls: [],
-        lastCreatedCall: "",
         formState: "create",
         loadedCall: { //initial blank state for the form
             remarks: []
@@ -36,14 +35,14 @@ const callList = createSlice({
             let outputObject = {incidentNumber: generatedIncidentNumber, dateCreated: currentDate.getTime(), assignedUnits: []};
             Object.assign(outputObject, action.payload);
             state.calls = [...state.calls, outputObject];
-            state.lastCreatedCall = outputObject;
+            state.loadedCall = outputObject;
         },
         setFormState: (state, action) => {
             state.formState = action.payload
         },
         editCall: (state, action) => {
             const target_index = state.calls.findIndex(({incidentNumber}) => incidentNumber === action.payload.incidentNumber);
-            state.calls[target_index] = action.payload;
+            Object.assign(state.calls[target_index], action.payload);
         },
         loadCall: (state, action) => {
             state.callList.loadedCall = action.payload;

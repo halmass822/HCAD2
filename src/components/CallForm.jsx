@@ -3,7 +3,7 @@ import { callTypesDefault } from "../utils/initialStates";
 import { getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createCall, selectFormState, selectLoadedCall, setFormState } from "../features/callFormSlice";
+import { createCall, editCall, selectFormState, selectLoadedCall, setFormState } from "../features/callFormSlice";
 import CallFormOverlay from "./CallFormOverlay";
 
 export default function CallForm(props) {
@@ -32,15 +32,30 @@ export default function CallForm(props) {
         if(address === "") {
             alert("Address required!");
         } else {
-            dispatch(createCall({
-                address: address,
-                callType: callType,
-                priority: priority,
-                remarks: remarks,
-                callerName: callerName,
-                callerPhone: callerPhone,
-                callerAddress: callerAddress
-            }));
+            setHasNewDetails(false);
+            if(formState === "create") {
+                dispatch(createCall({
+                    address: address,
+                    callType: callType,
+                    priority: priority,
+                    remarks: remarks,
+                    callerName: callerName,
+                    callerPhone: callerPhone,
+                    callerAddress: callerAddress
+                }));
+                dispatch(setFormState("update"));
+            } else if(formState === "update") {
+                dispatch(editCall({
+                    incidentNumber: incidentNumber,
+                    address: address,
+                    callType: callType,
+                    priority: priority,
+                    remarks: remarks,
+                    callerName: callerName,
+                    callerPhone: callerPhone,
+                    callerAddress: callerAddress
+                }))
+            }
         }
     }
 
@@ -104,10 +119,6 @@ export default function CallForm(props) {
             confirmFormChange();
         }
     }, [loadedCall])
-
-    function changeFormDetails(input) {
-        
-    }
 
     function cancelFormChange() {
         setOverlayState(false);
