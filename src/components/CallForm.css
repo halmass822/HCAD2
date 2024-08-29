@@ -1,6 +1,6 @@
 #hcad_callForm {
     padding: 1rem;
-    width: 400px;
+    min-width: 400px;
 }
 
 #hcad_callForm input {
