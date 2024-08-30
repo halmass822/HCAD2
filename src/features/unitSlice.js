@@ -1,5 +1,5 @@
-const { createSlice } = require("@reduxjs/toolkit");
-const { unitsDefault } = require("../utils/initialStates");
+import { createSlice } from "@reduxjs/toolkit";
+import { unitsDefault } from"../utils/initialStates";
 
 const unitSlice = createSlice({
     name: "units",
