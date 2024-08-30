@@ -11,8 +11,6 @@ const callList = createSlice({
             remarks: []
         } //stores the call details to switch to, used to confirm / cancel callform clearing
     },
-
-
     /*
         incidentNumber: ""
         dateCreated: Date()
@@ -25,8 +23,6 @@ const callList = createSlice({
         callerPhone: "",
         callerAddress: ""
     */
-
-
     reducers: {
         createCall: (state, action) => {
             const currentDate = new Date();
