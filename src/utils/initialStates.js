@@ -33,7 +33,7 @@ export const callTypesDefault = [
     },
 ];
 
-curretTime = new Date().getTime();
+const currentTime = new Date().getTime();
 
 export const unitsDefault = [
     {
