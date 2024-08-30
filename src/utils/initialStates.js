@@ -37,9 +37,10 @@ const currentTime = new Date().getTime();
 
 export const unitsDefault = [
     {
-        badge: "45567",
         officer1: "DOE",
+        badge1: "45567",
         officer2: "",
+        badge2: "",
         location: "10-19",
         unit: "6J101",
         status: "AV",
@@ -48,9 +49,10 @@ export const unitsDefault = [
         incidentType: "",
     }, 
     {
-        badge: "45568",
         officer1: "DARE",
+        badge1: "45568",
         officer2: "",
+        badge2: "",
         location: "10-19",
         unit: "6J102",
         status: "AV",
@@ -59,9 +61,10 @@ export const unitsDefault = [
         incidentType: "",
     },
     {
-        badge: "45569",
         officer1: "DAMIAN",
+        badge1: "45569",
         officer2: "",
+        badge2: "",
         location: "10-19",
         unit: "6J103",
         status: "AV",
@@ -70,9 +73,10 @@ export const unitsDefault = [
         incidentType: "",
     },
     {
-        badge: "45570",
         officer1: "FITCH",
+        badge1: "45570",
         officer2: "",
+        badge2: "",
         location: "10-19",
         unit: "6J104",
         status: "AV",
@@ -81,9 +85,10 @@ export const unitsDefault = [
         incidentType: "",
     },
     {
-        badge: "45571",
         officer1: "SHORE",
+        badge1: "45571",
         officer2: "",
+        badge2: "",
         location: "10-19",
         unit: "6J105",
         status: "AV",
