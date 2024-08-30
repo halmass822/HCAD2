@@ -44,9 +44,18 @@
     flex-grow: 1;
 }
 
+#hcad_callForm_calltypeselect {
+    height: 30px;
+    cursor: pointer;
+}
+
 #hcad_callForm_priorityselect {
     margin-left: 1rem;
+    height: 30px;
+    cursor: pointer;
 }
+
+
 
 /* remarks */
 
