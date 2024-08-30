@@ -45,7 +45,7 @@ const callList = createSlice({
             Object.assign(state.calls[target_index], action.payload);
         },
         loadCall: (state, action) => {
-            state.callList.loadedCall = action.payload;
+            state.loadedCall = action.payload;
         }
     }
 });

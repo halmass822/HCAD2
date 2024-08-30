@@ -112,6 +112,7 @@ export default function CallForm(props) {
     }
 
     useEffect(() => { 
+        if(loadedCall.incidentNumber === incidentNumber) return;
         if(hasNewDetails) {
             setOverlayState(true);
         } else {
