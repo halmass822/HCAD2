@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getMMSS } from "../utils/utilityFunctions";
 import { useDispatch } from "react-redux";
-import { loadCall } from "../features/callFormSlice";
+import { loadCall, setFormState } from "../features/callFormSlice";
 
 export default function CallRow(props) {
 
@@ -13,9 +13,14 @@ export default function CallRow(props) {
             setPending(getMMSS(Date.now() - props.callDetails.dateCreated));
         }, 1000);
         return () => clearInterval(intervalid);
-    }, [])
+    }, []);
 
-    return <tr className="hcad_callrow noselect" key={props.incident_number} onDoubleClick={() => dispatch(loadCall(props.callDetails))}>
+    function handleDoubleClick() {
+        dispatch(loadCall(props.callDetails));
+        dispatch(setFormState("select"));
+    }
+
+    return <tr className="hcad_callrow noselect" key={props.incident_number} onDoubleClick={handleDoubleClick}>
         <td className="noselect">{props.callDetails.priority}</td>
         <td className="noselect">{pending}</td>
         <td className="noselect">{props.callDetails.callType}</td>
