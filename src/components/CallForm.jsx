@@ -30,7 +30,7 @@ export default function CallForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if(address === "") {
+        if(!address) {
             alert("Address required!");
         } else {
             setHasNewDetails(false);
