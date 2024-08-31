@@ -1,0 +1,31 @@
+#hcad_unitList_table_wrapper {
+    overflow-y: scroll;
+    height: 480px;
+    display: inline-block;
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+#hcad_unitList_table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    overflow-y: scroll;
+}
+
+#hcad_unitList_table thead {
+    color: white;
+    background-color: gray;
+}
+
+#hcad_unitList_table tr {
+    border-bottom: 1px solid black;
+}
+
+#hcad_unitList_table th, #hcad_unitList_table td {
+    text-align: center;
+    overflow: hidden;
+}
+
+.hcad_unitrow_statusAV {
+    background-color: rgba(163, 255, 140, 0.699);
+}
