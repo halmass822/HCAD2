@@ -10,11 +10,12 @@ export default function CallForm(props) {
 
     const dispatch = useDispatch();
 
-    const [incidentNumber, setIncidentNumber] = useState("");
-    const [hasNewDetails, setHasNewDetails] = useState(false);
-    const [overlayState, setOverlayState] = useState(false);
+    const [hasNewDetails, setHasNewDetails] = useState(false); //warns user before form data is lost and call abandoned
+    const [overlayState, setOverlayState] = useState(false); 
     const formState = useSelector(selectFormState);
+    const [updateRadioState, setUpdateRadioState] = useState(true);
 
+    const [incidentNumber, setIncidentNumber] = useState("");
     const [address, setAddress] = useState("");
     const [callTypeOptions, setCallTypeOptions] = useState(callTypesDefault);
     const [callType, setCallType] = useState("");
@@ -136,9 +137,9 @@ export default function CallForm(props) {
                 <label>Create</label>
                 <input type="radio" className="hcad_callform_radio" value="create" checked={formState === "create"} onChange={handleRadioClick}></input>
                 <label>Update</label>
-                <input type="radio" className="hcad_callform_radio" value="update" checked={formState === "update"} onChange={handleRadioClick}></input>
+                <input type="radio" className="hcad_callform_radio" value="update" checked={formState === "update"} onChange={handleRadioClick} disabled={updateRadioState}></input>
                 <label>Select</label>
-                <input type="radio" className="hcad_callform_radio" value="select" checked={formState === "select"} onChange={handleRadioClick}></input>
+                <input type="radio" className="hcad_callform_radio" value="select" checked={formState === "select"} onChange={handleRadioClick} disabled></input>
                 <input type="text" id="hcad_callform_incidentNumber" disabled={true} value={incidentNumber}></input>
             </div>
 
