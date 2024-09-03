@@ -1,8 +1,9 @@
 #hcad_unitList_table_wrapper {
+    width: 100%;
+    display: inline-flex;
+    flex-flow: column;
     overflow-y: scroll;
-    display: inline-block;
     border: 2px solid black;
-    border-collapse: collapse;
 }
 
 #hcad_unitList_table {
@@ -27,4 +28,40 @@
 
 .hcad_unitrow_statusAV {
     background-color: rgba(163, 255, 140, 0.699);
+}
+
+/* table headers */
+
+#hcad_unitList_th_unit {
+    width: 50px;
+}
+
+#hcad_unitList_th_idle {
+    width: 50px;
+}
+
+#hcad_unitList_th_status {
+    width: 60px;
+}
+
+#hcad_unitList_th_officer {
+    width: 120px;
+}
+
+.hcad_unitrow_td_officer {
+    text-align: left !important;
+    overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+#hcad_unitList_th_badge {
+    width: 80px;
+}
+
+#hcad_unitList_th_calltype {
+    width: 225px;
+}
+
+#hcad_unitList_th_incnum {
+    width: 80px;
 }

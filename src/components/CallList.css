@@ -1,8 +1,9 @@
 #hcad_calllist_table_wrapper {
+    width: 100%;
+    display: inline-flex;
+    flex-flow: column;
     overflow-y: scroll;
-    display: inline-block;
     border: 2px solid black;
-    border-collapse: collapse;
 }
 
 #hcad_calllist_table {
@@ -34,7 +35,7 @@
 }
 
 #hcad_calllist_th_address {
-    width: 300px;
+    min-width: 300px;
 }
 
 #hcad_calllist_th_number {

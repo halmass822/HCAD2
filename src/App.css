@@ -1,16 +1,29 @@
-#hcad_topdiv {
-    display: flex;
-    justify-content: stretch;
-    align-items: stretch;
-    flex-grow: 1;
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+#root {
+    height: 100%;
 }
 
 #hcad_app {
     display: flex;
     flex-flow: column;
+    min-width: 1100px;
+    height: 100%;
+}
+
+#hcad_topdiv {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
 }
 
 #hcad_bottomdiv {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
     flex-grow: 1;
 }
 

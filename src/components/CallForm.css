@@ -32,7 +32,7 @@
 }
 
 #hcad_callform_incidentNumber {
-    flex-grow: 1;
+    width: 100%;
 }
 
 #hcad_callForm_topdiv {
