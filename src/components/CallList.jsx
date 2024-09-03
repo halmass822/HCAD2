@@ -1,15 +1,16 @@
 import CallRow from "./CallRow";
 
 import { useSelector } from "react-redux";
-import { selectCalls } from "../features/callFormSlice";
+import { selectCalls, selectFormUIHeight } from "../features/callFormSlice";
 
 import "./CallList.css";
 
 export default function CallList() {
     
     const calls = useSelector(selectCalls);
+    const callFormUIHeight = useSelector(selectFormUIHeight);
     
-    return <div id="hcad_calllist_table_wrapper">
+    return <div id="hcad_calllist_table_wrapper" style={{height: callFormUIHeight}}>
         <table id="hcad_calllist_table">
         <thead>
                 <tr>

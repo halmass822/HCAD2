@@ -1,6 +1,5 @@
 #hcad_unitList_table_wrapper {
     overflow-y: scroll;
-    height: 480px;
     display: inline-block;
     border: 2px solid black;
     border-collapse: collapse;

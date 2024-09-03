@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { callTypesDefault } from "../utils/initialStates";
 import { getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createCall, editCall, selectFormState, selectLoadedCall, setFormState } from "../features/callFormSlice";
+import { createCall, editCall, selectFormState, selectLoadedCall, setFormState, setFormUIHeight } from "../features/callFormSlice";
 import CallFormOverlay from "./CallFormOverlay";
 
 export default function CallForm(props) {
@@ -27,6 +27,12 @@ export default function CallForm(props) {
     const [callerAddress, setCallerAddress] = useState("");
 
     const loadedCall = useSelector(selectLoadedCall);
+
+    useEffect(() => {
+        const UIHeight = document.getElementById("hcad_callForm").clientHeight;
+        dispatch(setFormUIHeight(UIHeight));
+        console.log("hmm");
+    }, []);
 
     function handleSubmit(e) {
         e.preventDefault();

@@ -7,6 +7,7 @@ const callList = createSlice({
         nextIncidentNumber: 1,
         calls: [],
         formState: "create",
+        formUIHeight: "400px", //used to match the size of the form and the call list
         loadedCall: { //initial blank state for the form
             remarks: []
         } //stores the call details to switch to, used to confirm / cancel callform clearing
@@ -33,15 +34,18 @@ const callList = createSlice({
             state.calls = [...state.calls, outputObject];
             state.loadedCall = outputObject;
         },
-        setFormState: (state, action) => {
-            state.formState = action.payload
-        },
         editCall: (state, action) => {
             const target_index = state.calls.findIndex(({incidentNumber}) => incidentNumber === action.payload.incidentNumber);
             Object.assign(state.calls[target_index], action.payload);
         },
         loadCall: (state, action) => {
             state.loadedCall = action.payload;
+        },
+        setFormState: (state, action) => {
+            state.formState = action.payload;
+        },
+        setFormUIHeight: (state, action) => {
+            state.formUIHeight = action.payload;
         }
     }
 });
@@ -51,7 +55,8 @@ export const selectSpecificCall = (state, action) => state.callList.calls.find((
 export const selectLastCreatedCall = (state) => state.callList.lastCreatedCall;
 export const selectLoadedCall = (state) => state.callList.loadedCall;
 export const selectFormState = (state) => state.callList.formState;
+export const selectFormUIHeight = (state) => state.callList.formUIHeight;
 
-export const {createCall, editCall, loadCall, setFormState} = callList.actions;
+export const {createCall, editCall, loadCall, setFormState, setFormUIHeight} = callList.actions;
 
 export default callList.reducer;
