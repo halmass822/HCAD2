@@ -17,8 +17,7 @@ export default function CallForm(props) {
 
     const [incidentNumber, setIncidentNumber] = useState("");
     const [address, setAddress] = useState("");
-    const [callTypeOptions, setCallTypeOptions] = useState(callTypesDefault);
-    const [callType, setCallType] = useState("Assault");
+    const [callType, setCallType] = useState(callTypesDefault[0].name);
     const [priority, setPriority] = useState(1);
     const [remarks, setRemarks] = useState([]);
     const [remarkInProgress, setRemarkInProgress] = useState("");
@@ -72,10 +71,12 @@ export default function CallForm(props) {
     }
 
     function changeCallType(e) {
+        console.log(callType);
         setHasNewDetails(true);
-        const defaultPriority = callTypeOptions.find(x => x.name === e.target.value).priority
+        const defaultPriority = callTypesDefault.find(x => x.name === e.target.value).priority
         setCallType(e.target.value);
         setPriority(defaultPriority);
+        console.log(callType, priority);
     }
 
     function handleRemarkEnter({key}) { //runs on buttonpress in the remarks input element
@@ -154,8 +155,9 @@ export default function CallForm(props) {
 
         <div id="hcad_callform_typeprioritywrapper">
             <select disabled={formState === "select" ? "disabled" : ""} id="hcad_callForm_calltypeselect" value={callType} onChange={changeCallType}>
-                {[...callTypeOptions].map((x, i) => {
-                    return <option key={i} value={x.name}>{x.name}</option>
+                {<option key={1} value={callTypesDefault[0].name}>{callTypesDefault[0].name}</option>}
+                {[...callTypesDefault].slice(1).map((x, i) => {
+                    return <option key={i + 1} value={x.name}>{x.name}</option>
                 })}
             </select>
             <select disabled={formState === "select" ? "disabled" : ""} id="hcad_callForm_priorityselect" value={priority} onChange={e => changeStateThunk(e.target.value, setPriority)}>

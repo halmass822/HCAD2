@@ -9,20 +9,20 @@ const callList = createSlice({
         formState: "create",
         formUIHeight: "400px", //used to match the size of the form and the call list
         loadedCall: { //initial blank state for the form
-            remarks: []
+            incidentNumber: "",
+            dateCreated: Date(),
+            assignedUnits: [],
+            address: "",
+            callType: "",
+            priority: "",
+            remarks: [],
+            callerName: "",
+            callerPhone: "",
+            callerAddress: ""
         } //stores the call details to switch to, used to confirm / cancel callform clearing
     },
     /*
-        incidentNumber: ""
-        dateCreated: Date()
-        assignedUnits: []
-        address: "",
-        callType: "",
-        priority: "",
-        remarks: [],
-        callerName: "",
-        callerPhone: "",
-        callerAddress: ""
+        
     */
     reducers: {
         createCall: (state, action) => {
