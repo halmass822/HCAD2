@@ -30,7 +30,6 @@ export default function CallForm(props) {
     useEffect(() => {
         const UIHeight = document.getElementById("hcad_callForm").clientHeight;
         dispatch(setFormUIHeight(UIHeight));
-        console.log("hmm");
     }, []);
 
     function handleSubmit(e) {
@@ -71,12 +70,10 @@ export default function CallForm(props) {
     }
 
     function changeCallType(e) {
-        console.log(callType);
         setHasNewDetails(true);
         const defaultPriority = callTypesDefault.find(x => x.name === e.target.value).priority
         setCallType(e.target.value);
         setPriority(defaultPriority);
-        console.log(callType, priority);
     }
 
     function handleRemarkEnter({key}) { //runs on buttonpress in the remarks input element
