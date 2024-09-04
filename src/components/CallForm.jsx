@@ -91,8 +91,8 @@ export default function CallForm(props) {
     function clearForm() {
         setAddress("");
         setIncidentNumber("");
-        setCallType("");
-        setPriority("");
+        setCallType("ASSAULT");
+        setPriority("1");
         setRemarks([]);
         setRemarkInProgress("");
         setCallerName("");
