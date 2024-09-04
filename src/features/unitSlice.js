@@ -26,7 +26,7 @@ const unitSlice = createSlice({
             }
         },
         editUnit: (state, action) => {
-            targetUnitIndex = state.units.findIndex(x => x.unit === action.payload.unit);
+            const targetUnitIndex = state.units.findIndex(x => x.unit === action.payload.unit);
             if(targetUnitIndex < 0) {
                 state.errorState = true;
                 state.errorMessage = "Unit not found!";
