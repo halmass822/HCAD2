@@ -119,7 +119,6 @@ export default function CallForm(props) {
     }
 
     useEffect(() => { 
-        if(loadedCall.incidentNumber === incidentNumber) return;
         if(hasNewDetails) {
             setOverlayState(true);
         } else {
@@ -145,7 +144,7 @@ export default function CallForm(props) {
                 <label>Update</label>
                 <input type="radio" className="hcad_callform_radio" value="update" checked={formState === "update"} onChange={handleRadioClick} disabled={formState === "create"}></input>
                 <label>Select</label>
-                <input type="radio" className="hcad_callform_radio" value="select" checked={formState === "select"} onChange={handleRadioClick} disabled={formState === "create"}></input>
+                <input type="radio" className="hcad_callform_radio" value="select" checked={formState === "select"} onChange={handleRadioClick} disabled></input>
                 <input type="text" id="hcad_callform_incidentNumber" disabled={true} value={incidentNumber}></input>
             </div>
 
