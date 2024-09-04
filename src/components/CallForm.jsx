@@ -3,7 +3,7 @@ import { callTypesDefault } from "../utils/initialStates";
 import { getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createCall, editCall, selectFormState, selectLoadedCall, setFormState, setFormUIHeight } from "../features/callFormSlice";
+import { createCall, editCall, loadCall, selectFormState, selectLoadedCall, setFormState, setFormUIHeight } from "../features/callFormSlice";
 import CallFormOverlay from "./CallFormOverlay";
 
 export default function CallForm(props) {
@@ -101,18 +101,6 @@ export default function CallForm(props) {
         setHasNewDetails(false);
     }
 
-    function confirmFormChange() {
-        setIncidentNumber(loadedCall.incidentNumber)
-        setAddress(loadedCall.address);
-        setCallType(loadedCall.callType);
-        setPriority(loadedCall.priority);
-        setRemarks(loadedCall.remarks);
-        setCallerName(loadedCall.callerName);
-        setCallerPhone(loadedCall.callerPhone);
-        setCallerAddress(loadedCall.callerAddress);
-        setOverlayState(false);
-    }
-
     function handleRadioClick(e) {
         dispatch(setFormState(e.target.value));
         if(e.target.value === "create") clearForm();
@@ -128,6 +116,28 @@ export default function CallForm(props) {
     }, [loadedCall])
 
     function cancelFormChange() {
+        setOverlayState(false);
+        dispatch(loadCall({
+            incidentNumber: incidentNumber,
+            address: address,
+            callType: callType,
+            priority: priority,
+            remarks: remarks,
+            callerName: callerName,
+            callerPhone: callerPhone,
+            callerAddress: callerAddress
+        }));
+    }
+
+    function confirmFormChange() {
+        setIncidentNumber(loadedCall.incidentNumber)
+        setAddress(loadedCall.address);
+        setCallType(loadedCall.callType);
+        setPriority(loadedCall.priority);
+        setRemarks(loadedCall.remarks);
+        setCallerName(loadedCall.callerName);
+        setCallerPhone(loadedCall.callerPhone);
+        setCallerAddress(loadedCall.callerAddress);
         setOverlayState(false);
     }
 
