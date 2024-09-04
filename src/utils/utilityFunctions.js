@@ -18,3 +18,7 @@ export const getMMSS = (input = "now") => {
     return `${digitizeNumber(currentTime.getMinutes())}:${digitizeNumber(currentTime.getSeconds())}`;
 }
 
+export const getHHMM = (input = "now") => {
+  const currentTime = input ==="now" ? new Date() : new Date(input);
+  return `${digitizeNumber(currentTime.getHours())}:${digitizeNumber(currentTime.getMinutes())}`;
+}
