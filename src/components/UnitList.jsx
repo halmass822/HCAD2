@@ -19,6 +19,7 @@ export function UnitList() {
                     <th id="hcad_unitList_th_location">Location</th>
                     <th id="hcad_unitList_th_calltype">Calltype</th>
                     <th id="hcad_unitList_th_incnum">Inc. #</th>
+                    <th id="hcad_unitList_th_actions">Actions</th>
                 </tr>
             </thead>
             <tbody>

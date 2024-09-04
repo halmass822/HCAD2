@@ -65,3 +65,15 @@
 #hcad_unitList_th_incnum {
     width: 80px;
 }
+
+#hcad_unitList_th_actions {
+    width: 70px;
+}
+
+#hcad_dispatchunitbtn {
+    cursor: pointer;
+}
+#hcad_clearunitbtn {
+    cursor: pointer;
+    background-color: lightpink;
+}

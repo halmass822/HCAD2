@@ -21,5 +21,9 @@ export default function UnitRow(props) {
         <td className="hcad_unitrow_td_location">{props.unitDetails.location}</td>
         <td className="hcad_unitrow_td_calltype">{props.unitDetails.incidentType}</td>
         <td className="hcad_unitrow_td_incnum">{props.unitDetails.incidentNumber}</td>
+        <td className="hcad_unitrow_td_actions">
+            <button id="hcad_dispatchunitbtn">DP</button>
+            <button id="hcad_clearunitbtn">CL</button>
+        </td>
     </tr>
 }
