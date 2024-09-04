@@ -13,7 +13,6 @@ export default function CallForm(props) {
     const [hasNewDetails, setHasNewDetails] = useState(false); //warns user before form data is lost and call abandoned
     const [overlayState, setOverlayState] = useState(false); 
     const formState = useSelector(selectFormState);
-    const [updateRadioState, setUpdateRadioState] = useState(true);
 
     const [incidentNumber, setIncidentNumber] = useState("");
     const [address, setAddress] = useState("");
