@@ -10,7 +10,7 @@ const callList = createSlice({
         formUIHeight: "400px", //used to match the size of the form and the call list
         loadedCall: { //initial blank state for the form
             incidentNumber: "",
-            dateCreated: Date(),
+            dateCreated: new Date(),
             assignedUnits: [],
             address: "",
             callType: "ASSAULT",
