@@ -23,9 +23,20 @@ export default function UnitRow(props) {
                 unit: props.unitDetails.unit,
                 incidentNumber: loadedCall.incidentNumber,
                 incidentType: loadedCall.callType,
-                location: loadedCall.address
+                location: loadedCall.address,
+                status: "DP"
             }));
         }
+    }
+
+    function handleClear() {
+        dispatch(editUnit({
+            unit: props.unitDetails.unit,
+            incidentNumber: "",
+            incidentType: "",
+            location: "",
+            status: "AV"
+        }));
     }
 
     return <tr className={`hcad_unitrow hcad_unitrow_status${props.unitDetails.status}`}>
@@ -39,7 +50,7 @@ export default function UnitRow(props) {
         <td className="hcad_unitrow_td_incnum">{props.unitDetails.incidentNumber}</td>
         <td className="hcad_unitrow_td_actions">
             <button id="hcad_dispatchunitbtn" onClick={handleDispatch}>DP</button>
-            <button id="hcad_clearunitbtn">CL</button>
+            <button id="hcad_clearunitbtn" onClick={handleClear} >CL</button>
         </td>
     </tr>
 }

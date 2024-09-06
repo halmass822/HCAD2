@@ -30,6 +30,10 @@
     background-color: rgba(163, 255, 140, 0.699);
 }
 
+.hcad_unitrow_statusDP {
+    background-color: rgba(247, 140, 255, 0.699);
+}
+
 /* table headers */
 
 #hcad_unitList_th_unit {
