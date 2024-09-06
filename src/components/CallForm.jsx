@@ -4,14 +4,10 @@ import { getHHMM, getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch, useSelector } from "react-redux";
 import { createCall, editCall, loadCall, selectFormState, selectLoadedCall, setFormState, setFormUIHeight } from "../features/callFormSlice";
-import CallFormOverlay from "./CallFormOverlay";
 
 export default function CallForm(props) {
 
     const dispatch = useDispatch();
-
-    const [hasNewDetails, setHasNewDetails] = useState(false); //warns user before form data is lost and call abandoned
-    const [overlayState, setOverlayState] = useState(false); 
     const formState = useSelector(selectFormState);
 
     const [incidentNumber, setIncidentNumber] = useState("");
@@ -36,7 +32,6 @@ export default function CallForm(props) {
         if(!address) {
             alert("Address required!");
         } else {
-            setHasNewDetails(false);
             if(formState === "create") {
                 dispatch(createCall({
                     address: address,
@@ -64,12 +59,10 @@ export default function CallForm(props) {
     }
 
     function changeStateThunk(value, targetStateFunction) {
-        setHasNewDetails(true);
         targetStateFunction(value.toUpperCase());
     }
 
     function changeCallType(e) {
-        setHasNewDetails(true);
         const defaultPriority = callTypesDefault.find(x => x.name === e.target.value).priority
         setCallType(e.target.value);
         setPriority(defaultPriority);
@@ -84,7 +77,6 @@ export default function CallForm(props) {
     function handleRemarkEnter({key}) { //runs on buttonpress in the remarks input element
         if(/\S+/.test(remarkInProgress) && key === "Enter") {
             addRemark(remarkInProgress);
-            setHasNewDetails(true);
         }
     }
 
@@ -98,7 +90,6 @@ export default function CallForm(props) {
         setCallerName("");
         setCallerPhone("");
         setCallerAddress("");
-        setHasNewDetails(false);
     }
 
     function handleRadioClick(e) {
@@ -106,17 +97,12 @@ export default function CallForm(props) {
         if(e.target.value === "create") clearForm();
     }
 
-    useEffect(() => { 
-        if(hasNewDetails) {
-            setOverlayState(true);
-        } else {
+    useEffect(() => {
             clearForm();
             confirmFormChange();
-        }
-    }, [loadedCall])
+    }, [loadedCall]);
 
     function cancelFormChange() {
-        setOverlayState(false);
         dispatch(loadCall({
             incidentNumber: incidentNumber,
             address: address,
@@ -138,13 +124,9 @@ export default function CallForm(props) {
         setCallerName(loadedCall.callerName);
         setCallerPhone(loadedCall.callerPhone);
         setCallerAddress(loadedCall.callerAddress);
-        setOverlayState(false);
     }
 
     return <div id="hcad_callForm" onSubmit={handleSubmit} className="newCall"> 
-
-        <CallFormOverlay overlayState={overlayState} proceedButton={confirmFormChange} cancelButton={cancelFormChange}/>
-
             {/* top section */}
         
         <div id="hcad_callForm_topdiv">
