@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { callTypesDefault } from "../utils/initialStates";
-import { getHHMM, getMMSS } from "../utils/utilityFunctions";
+import { getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch, useSelector } from "react-redux";
 import { createCall, editCall, loadCall, selectFormState, selectLoadedCall, setFormState, setFormUIHeight } from "../features/callFormSlice";
@@ -75,16 +75,16 @@ export default function CallForm(props) {
         setPriority(defaultPriority);
     }
 
-    function addRemark(input) {
-        setRemarks((prev) => [...prev, {text: input.trim(), time: getHHMM()}]); //potential timezone conflict
-        setRemarkInProgress("");
-    }
-
     function handleRemarkEnter({key}) { //runs on buttonpress in the remarks input element
         if(/\S+/.test(remarkInProgress) && key === "Enter") {
             addRemark(remarkInProgress);
             setHasNewDetails(true);
         }
+    }
+
+    function addRemark(input) {
+        setRemarks((prev) => [...prev, {text: input.trim(), time: getMMSS()}]); //potential timezone conflict
+        setRemarkInProgress("");
     }
 
     function clearForm() {
@@ -186,7 +186,7 @@ export default function CallForm(props) {
                     {remarks.length === 0 ? null : remarks.map((x, i) => {
                         return <li className="hcad_callform_remarkli" key={i}>
                             <p className="hcad_callform_remarkli_text">{x.text}</p>
-                            <p className="hcad_callform_remarkli_time">{x.time}</p>
+                            <p className="hcad_callform_remarkli_time"></p>
                         </li>
                     })}
                 </ul>
