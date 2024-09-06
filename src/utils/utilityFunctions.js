@@ -22,3 +22,5 @@ export const getHHMM = (input = "now") => {
   const currentTime = input ==="now" ? new Date() : new Date(input);
   return `${digitizeNumber(currentTime.getHours())}:${digitizeNumber(currentTime.getMinutes())}`;
 }
+
+export const orderCallsByPriority = (a, b) => Number(a.priority) - Number(b.priority); //to use in sort functions

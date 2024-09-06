@@ -4,12 +4,13 @@ import { useSelector } from "react-redux";
 import { selectCalls, selectFormUIHeight } from "../features/callFormSlice";
 
 import "./CallList.css";
+import { orderCallsByPriority } from "../utils/utilityFunctions";
 
 export default function CallList() {
     
-    const calls = useSelector(selectCalls);
+    const calls = [...useSelector(selectCalls)];
     const callFormUIHeight = useSelector(selectFormUIHeight);
-    
+
     return <div id="hcad_calllist_table_wrapper" style={{height: callFormUIHeight}}>
         <table id="hcad_calllist_table">
         <thead>
@@ -23,7 +24,7 @@ export default function CallList() {
                 </tr>
                 </thead>
             <tbody>
-                {calls.map((x, i) => <CallRow key={i} callDetails={x} />)}
+                {calls.sort(orderCallsByPriority).map((x, i) => <CallRow key={i} callDetails={x} />)}
             </tbody>
         </table>
     </div> 
