@@ -20,7 +20,7 @@ export default function CallRow(props) {
         dispatch(setFormState("select"));
     }
 
-    return <tr className="hcad_callrow noselect" key={props.incident_number} onDoubleClick={handleDoubleClick}>
+    return <tr className={`hcad_callrow noselect hcad_callrow_callpriority${props.callDetails.priority}`} key={props.incident_number} onDoubleClick={handleDoubleClick}>
         <td className="noselect">{props.callDetails.priority}</td>
         <td className="noselect">{pending}</td>
         <td className="noselect">{props.callDetails.callType}</td>

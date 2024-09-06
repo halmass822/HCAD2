@@ -54,3 +54,16 @@
 .hcad_callrow {
     cursor: pointer
 }
+
+.hcad_callrow_callpriority0 * {
+    background-color: red !important;
+    color: white !important
+}
+
+.hcad_callrow_callpriority1 * {
+    background-color: rgb(253, 180, 180) !important;
+}
+
+.hcad_callrow_callpriority2 * {
+    background-color: rgb(252, 253, 180) !important;
+}
