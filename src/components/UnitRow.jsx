@@ -15,7 +15,7 @@ export default function UnitRow(props) {
             setPending(getMMSS(Date.now() - props.unitDetails.idle));
         }, 1000);
         return () => clearInterval(intervalid);
-    }, []);
+    }, [props.unitDetails.idle]);
 
     function handleDispatch() {
         if(loadedCall.incidentNumber) {

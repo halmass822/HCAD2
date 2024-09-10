@@ -31,7 +31,8 @@ const unitSlice = createSlice({
                 state.errorState = true;
                 state.errorMessage = "Unit not found!";
             } else {
-                Object.assign(state.units[targetUnitIndex], action.payload);
+                const currentTime = new Date().getTime();
+                Object.assign(state.units[targetUnitIndex], {...action.payload, idle: currentTime});
             }
         }
     }
