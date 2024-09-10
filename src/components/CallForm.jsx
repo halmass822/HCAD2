@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { callTypesDefault } from "../utils/initialStates";
+import { blankCall, callTypesDefault } from "../utils/initialStates";
 import { getHHMM, getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -94,7 +94,9 @@ export default function CallForm(props) {
 
     function handleRadioClick(e) {
         dispatch(setFormState(e.target.value));
-        if(e.target.value === "create") clearForm();
+        if(e.target.value === "create") {
+            dispatch(loadCall(blankCall));
+        };
     }
 
     useEffect(() => {

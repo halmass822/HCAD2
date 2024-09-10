@@ -35,6 +35,19 @@ export const callTypesDefault = [
 
 const currentTime = new Date().getTime();
 
+export const blankCall = {
+    incidentNumber: "",
+    dateCreated: new Date().getTime(),
+    assignedUnits: [],
+    address: "",
+    callType: "ASSAULT",
+    priority: "1",
+    remarks: [],
+    callerName: "",
+    callerPhone: "",
+    callerAddress: ""
+}
+
 export const unitsDefault = [
     {
         officer1: "DOE",

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { digitizeNumber } from "../utils/utilityFunctions";
+import { blankCall } from "../utils/initialStates";
 
 const callList = createSlice({
     name: "callList",
@@ -8,18 +9,19 @@ const callList = createSlice({
         calls: [],
         formState: "create",
         formUIHeight: "400px", //used to match the size of the form and the call list
-        loadedCall: { //initial blank state for the form
-            incidentNumber: "",
-            dateCreated: new Date().getTime(),
-            assignedUnits: [],
-            address: "",
-            callType: "ASSAULT",
-            priority: "1",
-            remarks: [],
-            callerName: "",
-            callerPhone: "",
-            callerAddress: ""
-        } //stores the call details to switch to, used to confirm / cancel callform clearing
+        loadedCall: blankCall  //stores the call details to switch to, used to confirm / cancel callform clearing
+            
+            //initial blank state for the form
+            // incidentNumber: "",
+            // dateCreated: new Date().getTime(),
+            // assignedUnits: [],
+            // address: "",
+            // callType: "ASSAULT",
+            // priority: "1",
+            // remarks: [],
+            // callerName: "",
+            // callerPhone: "",
+            // callerAddress: ""
     },
     /*
         
