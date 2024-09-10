@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getMMSS } from "../utils/utilityFunctions";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoadedCall } from "../features/callFormSlice";
+import { editCall, selectLoadedCall } from "../features/callFormSlice";
 import { editUnit } from "../features/unitSlice";
 
 export default function UnitRow(props) {
@@ -19,12 +19,17 @@ export default function UnitRow(props) {
 
     function handleDispatch() {
         if(loadedCall.incidentNumber) {
+            if(props.unitDetails.incidentNumber === loadedCall.incidentNumber) return; //ignore if already assigned to the call
             dispatch(editUnit({
                 unit: props.unitDetails.unit,
                 incidentNumber: loadedCall.incidentNumber,
                 incidentType: loadedCall.callType,
                 location: loadedCall.address,
                 status: "DP"
+            }));
+            dispatch(editCall({
+                incidentNumber: loadedCall.incidentNumber,
+                assignedUnits: [...loadedCall.assignedUnits, props.unitDetails.unit]
             }));
         }
     }
@@ -36,6 +41,10 @@ export default function UnitRow(props) {
             incidentType: "",
             location: "",
             status: "AV"
+        }));
+        dispatch(editCall({
+            incidentNumber: loadedCall.incidentNumber,
+            assignedUnits: loadedCall.assignedUnits.filter((x) => x !== props.unitDetails.unit)
         }));
     }
 
