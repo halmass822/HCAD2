@@ -14,7 +14,6 @@ export default function EditUnitOverlay() {
     const [officer2, setOfficer2] = useState("");
     const [badge2, setBadge2] = useState("");
 
-
     useEffect(() => {
         if(createoredit === "edit") setUnit(targetUnit);
     }, [targetUnit]);
@@ -28,6 +27,8 @@ export default function EditUnitOverlay() {
                 <input 
                     type="text" 
                     disabled={createoredit === "create" ? false : true}
+                    value={unit}
+                    onChange={(e) => setUnit(e.target.value)}
                 ></input>
             <label id="hcad_overlay_inputofficer1"> Officer 1:
                 <input type="text" value={officer1} onChange={(e) => setOfficer1(e.target.value)}></input>
@@ -35,10 +36,10 @@ export default function EditUnitOverlay() {
             <label id="hcad_overlay_inputbadge1"> Badge 1:
                 <input type="text" value={badge1} onChange={(e) => setBadge1(e.target.value)}></input>
             </label>
-            <label id="hcad_overlay_inputofficer2"> Officer 1:
+            <label id="hcad_overlay_inputofficer2"> Officer 2:
                 <input type="text" value={officer2} onChange={(e) => setOfficer2(e.target.value)}></input>
             </label>
-            <label id="hcad_overlay_inputbadge2"> Officer 1:
+            <label id="hcad_overlay_inputbadge2"> Badge 2:
                 <input type="text" value={badge2} onChange={(e) => setBadge2(e.target.value)}></input>
             </label>
                 </label>
