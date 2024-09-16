@@ -1,0 +1,19 @@
+#hcad_overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(211, 211, 211, 0.518);
+    z-index: 9;
+}
+
+#hcad_editunitoverlay {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%, -50%);
+    z-index: 10;
+    padding: 1rem;
+    border: 3px solid black;
+    background-color: lightgray;
+    border-radius: 0.5rem;
+}
