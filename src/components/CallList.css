@@ -31,7 +31,7 @@
 }
 
 #hcad_calllist_th_type {
-    width: 225px;
+    min-width: 225px;
 }
 
 #hcad_calllist_th_address {
@@ -49,6 +49,17 @@
 .hcad_callrow_td_address, .hcad_callrow_td_units p {
     text-wrap: nowrap;
     text-overflow: ellipsis;
+}
+
+.hcad_callrow_td_address {
+    max-width: 400px;
+}
+
+.hcad_callrow_td_units {
+    font-size: 14px;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    max-width: 100px;
 }
 
 .hcad_callrow {
