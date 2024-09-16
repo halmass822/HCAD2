@@ -7,6 +7,9 @@ const unitSlice = createSlice({
         units: unitsDefault,
         errorState: false,
         errorMessage: "",
+        overlayState: false,
+        createoredit: "create",
+        targetUnit: "",
     },
     reducers: {
         createUnit: (state, action) => {
@@ -41,6 +44,9 @@ const unitSlice = createSlice({
 export const selectAllUnits = (state) => state.units.units;
 export const selectUnitError = (state) => state.units.errorState;
 export const selectUnitErrorMessage = (state) => state.units.errorMessage;
+export const selectOverlayState = (state) => state.units.overlayState;
+export const selectCreateoredit = (state) => state.units.createoredit;
+export const selectTargetUnit = (state) => state.units.targetUnit;
 
 export const {createUnit, editUnit} = unitSlice.actions;
 
