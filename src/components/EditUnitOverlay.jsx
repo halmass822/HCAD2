@@ -8,8 +8,13 @@ export default function EditUnitOverlay() {
     const createoredit = useSelector(selectCreateoredit);
     const targetUnit = useSelector(selectTargetUnit);
 
-    const [unit, setUnit] = useState
-    ("");
+    const [unit, setUnit] = useState("");
+    const [officer1, setOfficer1] = useState("");
+    const [badge1, setBadge1] = useState("");
+    const [officer2, setOfficer2] = useState("");
+    const [badge2, setBadge2] = useState("");
+
+
     useEffect(() => {
         if(createoredit === "edit") setUnit(targetUnit);
     }, [targetUnit]);
@@ -19,11 +24,23 @@ export default function EditUnitOverlay() {
             {createoredit === "create" 
             ?<h4 id="hcad_overlay_title">Create Unit</h4> 
             :<h4 id="hcad_overlay_title">Edit Unit {targetUnit}</h4>}
-            <label id="hcad_overlay_inputunit">Unit
+            <label id="hcad_overlay_inputunit">Unit:
                 <input 
                     type="text" 
                     disabled={createoredit === "create" ? false : true}
                 ></input>
+            <label id="hcad_overlay_inputofficer1"> Officer 1:
+                <input type="text" value={officer1} onChange={(e) => setOfficer1(e.target.value)}></input>
+            </label>
+            <label id="hcad_overlay_inputbadge1"> Badge 1:
+                <input type="text" value={badge1} onChange={(e) => setBadge1(e.target.value)}></input>
+            </label>
+            <label id="hcad_overlay_inputofficer2"> Officer 1:
+                <input type="text" value={officer2} onChange={(e) => setOfficer2(e.target.value)}></input>
+            </label>
+            <label id="hcad_overlay_inputbadge2"> Officer 1:
+                <input type="text" value={badge2} onChange={(e) => setBadge2(e.target.value)}></input>
+            </label>
                 </label>
         </div>
     </div>

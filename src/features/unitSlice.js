@@ -7,7 +7,7 @@ const unitSlice = createSlice({
         units: unitsDefault,
         errorState: false,
         errorMessage: "",
-        overlayState: false,
+        overlayState: true,
         createoredit: "create",
         targetUnit: "",
     },
