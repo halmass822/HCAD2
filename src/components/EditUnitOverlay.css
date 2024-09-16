@@ -16,4 +16,51 @@
     border: 2px solid black;
     background-color: lightgray;
     border-radius: 0.5rem;
+    display: flex;
+    flex-flow: column;
+}
+
+#hcad_overlay_topdiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+#hcad_overlay_title {
+    margin: 0 5px 0 0;
+    font-weight: bold;
+}
+
+#hcad_overlay_inputunit input {
+    width: 50px !important;
+    text-align: center;
+}
+
+#hcad_editunitoverlay label {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+#hcad_editunitoverlay input {
+    width: 150px;
+    text-align: center;
+}
+
+#hcad_overlay_buttonsdiv {
+    display: flex;
+}
+
+#hcad_overlay_buttonsdiv button {
+    margin-top: 5px;
+    cursor: pointer;
+    flex-grow: 1;
+    border: 1px solid black;
+}
+
+#hcad_overlay_cancel {
+    background-color: rgb(255, 192, 192);
+}
+
+#hcad_overlay_button {
+    background-color: rgb(217, 255, 192);
 }
