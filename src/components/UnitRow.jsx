@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getMMSS } from "../utils/utilityFunctions";
 import { useDispatch, useSelector } from "react-redux";
 import { editCall, selectLoadedCall } from "../features/callFormSlice";
-import { editUnit } from "../features/unitSlice";
+import { editUnit, setCreateOrEditUnit, setOverlayState, setTargetUnit } from "../features/unitSlice";
 
 export default function UnitRow(props) {
 
@@ -48,6 +48,12 @@ export default function UnitRow(props) {
         }));
     }
 
+    function handleEdit() {
+        dispatch(setCreateOrEditUnit("edit"));
+        dispatch(setTargetUnit(props.unitDetails.unit));
+        dispatch(setOverlayState(true));
+    }
+
     return <tr className={`hcad_unitrow hcad_unitrow_status${props.unitDetails.status}`}>
         <td className="hcad_unitrow_td_unit">{props.unitDetails.unit}</td>
         <td className="hcad_unitrow_td_idle">{[pending]}</td>
@@ -60,6 +66,7 @@ export default function UnitRow(props) {
         <td className="hcad_unitrow_td_actions">
             <button id="hcad_dispatchunitbtn" onClick={handleDispatch}>DP</button>
             <button id="hcad_clearunitbtn" onClick={handleClear} >CL</button>
+            <button id="hcad_editunitbtn" onClick={handleEdit} >ED</button>
         </td>
     </tr>
 }

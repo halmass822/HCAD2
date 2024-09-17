@@ -37,6 +37,15 @@ const unitSlice = createSlice({
                 const currentTime = new Date().getTime();
                 Object.assign(state.units[targetUnitIndex], {...action.payload, idle: currentTime});
             }
+        },
+        setOverlayState: (state, action) => {
+            state.overlayState = action.payload;
+        },
+        setCreateOrEditUnit: (state, action) => {
+            state.createoredit = action.payload;
+        },
+        setTargetUnit: (state, action) => {
+            state.targetUnit = action.payload;
         }
     }
 });
@@ -48,6 +57,6 @@ export const selectOverlayState = (state) => state.units.overlayState;
 export const selectCreateoredit = (state) => state.units.createoredit;
 export const selectTargetUnit = (state) => state.units.targetUnit;
 
-export const {createUnit, editUnit} = unitSlice.actions;
+export const {createUnit, editUnit, setOverlayState, setCreateOrEditUnit, setTargetUnit} = unitSlice.actions;
 
 export default unitSlice.reducer;

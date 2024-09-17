@@ -12,6 +12,16 @@
     overflow-y: scroll;
 }
 
+#hcad_unitList_table * {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 #hcad_unitList_table thead {
     color: white;
     background-color: gray;
@@ -71,13 +81,40 @@
 }
 
 #hcad_unitList_th_actions {
-    width: 70px;
+    width: 100px;
 }
 
 #hcad_dispatchunitbtn {
     cursor: pointer;
+    background-color: aquamarine;
+    border: 1px solid black;
 }
+
+#hcad_dispatchunitbtn:hover {
+    background-color: rgb(113, 224, 187);
+
+}
+
 #hcad_clearunitbtn {
     cursor: pointer;
     background-color: lightpink;
+    border: 1px solid black;
+}
+
+#hcad_clearunitbtn:hover {
+    background-color: rgb(228, 165, 175);
+}
+
+#hcad_editunitbtn {
+    cursor: pointer;
+    background-color: aqua;
+    border: 1px solid black;
+}
+
+#hcad_editunitbtn:hover {
+    background-color: rgb(0, 223, 223);
+}
+
+#hcad_unitlist_createunit {
+    cursor: pointer;
 }
