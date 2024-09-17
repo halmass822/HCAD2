@@ -133,11 +133,11 @@ export default function CallForm(props) {
         
         <div id="hcad_callForm_topdiv">
             <div id="hcad_callform_radiodiv">
-                <label>Create</label>
+                <label className="noselect">Create</label>
                 <input type="radio" className="hcad_callform_radio" value="create" checked={formState === "create"} onChange={handleRadioClick}></input>
-                <label>Update</label>
+                <label className="noselect">Update</label>
                 <input type="radio" className="hcad_callform_radio" value="update" checked={formState === "update"} onChange={handleRadioClick} disabled={formState === "create"}></input>
-                <label>Select</label>
+                <label className="noselect">Select</label>
                 <input type="radio" className="hcad_callform_radio" value="select" checked={formState === "select"} onChange={handleRadioClick} disabled></input>
                 <input type="text" id="hcad_callform_incidentNumber" disabled={true} value={incidentNumber}></input>
             </div>
