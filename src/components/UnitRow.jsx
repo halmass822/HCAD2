@@ -55,7 +55,7 @@ export default function UnitRow(props) {
         dispatch(setOverlayState(true));
     }
 
-    return <tr className={`hcad_unitrow hcad_unitrow_status${props.unitDetails.status}`}>
+    return <tr className={`hcad_unitrow hcad_unitrow_status${props.unitDetails.status}`} onDoubleClick={() => props.handleDblClick(props.unitDetails.incidentNumber)}>
         <td className="hcad_unitrow_td_unit">{props.unitDetails.unit}</td>
         <td className="hcad_unitrow_td_idle">{[pending]}</td>
         <td className="hcad_unitrow_td_status">{props.unitDetails.status}</td>

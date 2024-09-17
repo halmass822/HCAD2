@@ -2,15 +2,27 @@ import { useDispatch, useSelector } from "react-redux"
 import { selectAllUnits, setCreateOrEditUnit, setOverlayState, setTargetUnit } from "../features/unitSlice"
 import "./UnitList.css";
 import UnitRow from "./UnitRow";
+import { loadCall, selectCalls, setFormState } from "../features/callFormSlice";
 
 export function UnitList() {
     const dispatch = useDispatch();
     const units = useSelector(selectAllUnits);
+    const calls = useSelector(selectCalls);
 
     function handleCreateUnitPress() {
         dispatch(setCreateOrEditUnit("create"));
         dispatch(setTargetUnit(""));
         dispatch(setOverlayState(true));
+    }
+
+    function handleUnitRowDblClick(targetIncidentNumber) {
+        if(targetIncidentNumber) {
+            const targetCall = calls.find((x) => x.incidentNumber === targetIncidentNumber);
+            if(targetCall) {
+                dispatch(loadCall(targetCall));
+                dispatch(setFormState("select"));
+            } 
+        }
     }
 
     return <div id="hcad_unitList_table_wrapper">
@@ -29,7 +41,7 @@ export function UnitList() {
                 </tr>
             </thead>
             <tbody>
-                {units.map((x, i) => <UnitRow key={i} unitDetails={x} />)}
+                {units.map((x, i) => <UnitRow key={i} unitDetails={x} handleDblClick={handleUnitRowDblClick} />)}
             </tbody>
         </table>
     </div>

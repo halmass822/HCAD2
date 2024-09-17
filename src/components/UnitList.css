@@ -36,6 +36,10 @@
     overflow: hidden;
 }
 
+.hcad_unitrow {
+    cursor: pointer;
+}
+
 .hcad_unitrow_statusAV {
     background-color: rgba(163, 255, 140, 0.699);
 }
