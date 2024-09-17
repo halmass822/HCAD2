@@ -35,6 +35,7 @@ export default function UnitRow(props) {
     }
 
     function handleClear() {
+        if(props.details.incidentNumber === "" && props.details.incidentType === "") return;
         dispatch(editUnit({
             unit: props.unitDetails.unit,
             incidentNumber: "",
