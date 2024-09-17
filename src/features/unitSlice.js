@@ -7,9 +7,9 @@ const unitSlice = createSlice({
         units: unitsDefault,
         errorState: false,
         errorMessage: "",
-        overlayState: true,
-        createoredit: "edit",
-        targetUnit: "6J101",
+        overlayState: false,
+        createoredit: "create",
+        targetUnit: "",
     },
     reducers: {
         createUnit: (state, action) => {
