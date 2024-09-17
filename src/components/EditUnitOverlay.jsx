@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { createUnit, editUnit, selectCreateoredit, selectOverlayState, selectTargetUnit, setOverlayState } from "../features/unitSlice";
+import { createUnit, editUnit, selectAllUnits, selectCreateoredit, selectOverlayState, selectTargetUnit, setOverlayState } from "../features/unitSlice";
 import "./EditUnitOverlay.css";
 import { useEffect, useState } from "react";
 
@@ -8,6 +8,7 @@ export default function EditUnitOverlay() {
     const overlayState = useSelector(selectOverlayState);
     const createoredit = useSelector(selectCreateoredit);
     const targetUnit = useSelector(selectTargetUnit);
+    const allUnits = useSelector(selectAllUnits);
 
     const [unit, setUnit] = useState("");
     const [officer1, setOfficer1] = useState("");
@@ -16,8 +17,15 @@ export default function EditUnitOverlay() {
     const [badge2, setBadge2] = useState("");
 
     useEffect(() => {
-        if(createoredit === "edit") setUnit(targetUnit);
-    }, [targetUnit]);
+        if(createoredit === "edit") {
+            const targetUnitDetails = allUnits.find((x) => x.unit === targetUnit);
+            setUnit(targetUnit);
+            setOfficer1(targetUnitDetails.officer1);
+            setBadge1(targetUnitDetails.badge1);
+            setOfficer2(targetUnitDetails.officer2);
+            setBadge2(targetUnitDetails.badge2); 
+        } 
+    }, [targetUnit, allUnits]);
 
     function handleSubmit() {
         if(unit === "" || officer1 === "" || badge1 === "") {
@@ -40,7 +48,7 @@ export default function EditUnitOverlay() {
         <div id="hcad_overlay_topdiv">
         {createoredit === "create" 
             ?<p id="hcad_overlay_title">Create Unit</p> 
-            :<p id="hcad_overlay_title">Editing Unit {targetUnit}</p>
+            :<p id="hcad_overlay_title">Editing Unit</p>
             }
             <label id="hcad_overlay_inputunit">Unit:
                 <input 

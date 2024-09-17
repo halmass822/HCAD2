@@ -54,7 +54,6 @@ const callList = createSlice({
 });
 
 export const selectCalls = (state) => state.callList.calls;
-export const selectSpecificCall = (state, action) => state.callList.calls.find((x) => x.incidentNumber === action.payload);
 export const selectLastCreatedCall = (state) => state.callList.lastCreatedCall;
 export const selectLoadedCall = (state) => state.callList.loadedCall;
 export const selectFormState = (state) => state.callList.formState;
