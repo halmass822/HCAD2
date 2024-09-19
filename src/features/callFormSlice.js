@@ -40,6 +40,7 @@ const callList = createSlice({
             const target_index = state.calls.findIndex(({incidentNumber}) => incidentNumber === action.payload.incidentNumber);
             Object.assign(state.calls[target_index], action.payload);
             state.loadedCall = state.calls[target_index];
+            state.formState = "update";
         },
         loadCall: (state, action) => {
             state.loadedCall = action.payload;

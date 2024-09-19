@@ -31,7 +31,8 @@ export function UnitList() {
         const targetCall = calls.find((x) => x.incidentNumber === targetCallNumber);
         if(targetCall) dispatch(editCall({
             incidentNumber: targetCallNumber,
-            assignedUnits: targetCall.assignedUnits.filter((x) => x !== targetUnitId)
+            assignedUnits: targetCall.assignedUnits.filter((x) => x !== targetUnitId),
+            remarks: [...targetCall.remarks, {text: `${targetUnitId} CLEARED`, time: getHHMM()}]
         }));
 
         dispatch(editUnit({
@@ -67,10 +68,10 @@ export function UnitList() {
             dispatch(addRemark({
                 incidentNumber: loadedCall.incidentNumber,
                 remark: {
-                    text: `${targetUnitId} ADDED TO CALL`,
+                    text: `${targetUnitId} DISPATCHED`,
                     time: getHHMM()
                 }
-            }))
+            }));
         }
     }
 
