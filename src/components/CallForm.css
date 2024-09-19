@@ -86,11 +86,23 @@
     padding: 0;
     display: flex;
     flex-flow: column-reverse;
+    max-width: 400px;
 }
 
 .hcad_callform_remarkli {
     padding: 0.25rem;
     text-wrap: wrap;
+    display: flex;
+    overflow: hidden;
+    border-bottom: 1px solid rgb(134, 134, 134);
+}
+
+.hcad_callform_remarkli_time {
+    margin-right: 5px;
+}
+
+.hcad_callform_remarkli_text {
+    flex-grow: 1;
 }
 
 .hcad_callform_remarkli:nth-child(even) {
@@ -99,7 +111,8 @@
 
 .hcad_callform_remarkli_text, .hcad_callform_remarkli_time {
     padding: 0;
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /* caller section */

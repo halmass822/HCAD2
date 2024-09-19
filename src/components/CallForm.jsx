@@ -188,8 +188,8 @@ export default function CallForm(props) {
                 <ul id="hcad_callform_remarkslist">
                     {remarks.length === 0 ? null : remarks.map((x, i) => {
                         return <li className="hcad_callform_remarkli" key={i}>
-                            <p className="hcad_callform_remarkli_text">{x.text}</p>
                             <p className="hcad_callform_remarkli_time">{x.time}</p>
+                            <p className="hcad_callform_remarkli_text">{x.text}</p>
                         </li>
                     })}
                 </ul>
