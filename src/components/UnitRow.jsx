@@ -7,7 +7,6 @@ import { editUnit, setCreateOrEditUnit, setOverlayState, setTargetUnit } from ".
 export default function UnitRow(props) {
 
     const [pending, setPending] = useState("--:--");
-    const loadedCall = useSelector(selectLoadedCall);
     const dispatch = useDispatch();
 
     useEffect(() => {
