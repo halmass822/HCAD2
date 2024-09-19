@@ -3,7 +3,7 @@ import { blankCall, callTypesDefault } from "../utils/initialStates";
 import { getHHMM, getMMSS } from "../utils/utilityFunctions";
 import "./CallForm.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createCall, editCall, loadCall, selectFormState, selectLoadedCall, setFormState, setFormUIHeight } from "../features/callFormSlice";
+import { addRemark, createCall, editCall, loadCall, selectCalls, selectFormState, selectLoadedCall, setFormState, setFormUIHeight } from "../features/callFormSlice";
 
 export default function CallForm(props) {
 
@@ -21,6 +21,7 @@ export default function CallForm(props) {
     const [callerAddress, setCallerAddress] = useState("");
 
     const loadedCall = useSelector(selectLoadedCall);
+    const allCalls = useSelector(selectCalls);
 
     useEffect(() => {
         const UIHeight = document.getElementById("hcad_callForm").clientHeight;
@@ -69,14 +70,24 @@ export default function CallForm(props) {
     }
 
     
-    function addRemark(input) {
-        setRemarks((prev) => [...prev, {text: input.trim(), time: getHHMM()}]); //potential timezone conflict
+    function callformAddRemark(input) {
+        if(formState === "create") {
+            setRemarks((prev) => [...prev, {text: input.trim(), time: getHHMM()}]); //potential timezone conflict
+        } else {
+            dispatch(addRemark({
+                incidentNumber: incidentNumber,
+                remark: {
+                    time: getHHMM(),
+                    text: input.trim()
+                }
+            }));
+        }
         setRemarkInProgress("");
     }
     
     function handleRemarkEnter({key}) { //runs on buttonpress in the remarks input element
         if(/\S+/.test(remarkInProgress) && key === "Enter") {
-            addRemark(remarkInProgress);
+            callformAddRemark(remarkInProgress);
         }
     }
 
@@ -100,9 +111,16 @@ export default function CallForm(props) {
     }
 
     useEffect(() => {
-            clearForm();
-            confirmFormChange();
+        clearForm();
+        confirmFormChange();
     }, [loadedCall]);
+
+    useEffect(() => {
+        if(incidentNumber !== "") {
+            const targetCallRemarks = allCalls.find((x) => x.incidentNumber === incidentNumber).remarks;
+            setRemarks(targetCallRemarks);
+        }
+    }, [allCalls])
 
     function cancelFormChange() {
         dispatch(loadCall({

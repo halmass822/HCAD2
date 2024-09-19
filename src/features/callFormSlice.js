@@ -49,7 +49,7 @@ const callList = createSlice({
         },
         addRemark: (state, action) => {
             const target_index = state.calls.findIndex(({incidentNumber}) => incidentNumber === action.payload.incidentNumber);
-            state.calls[target_index].remarks.push(action.payload.remark);
+            state.calls[target_index].remarks = [...state.calls[target_index].remarks, action.payload.remark];
         },
         setFormUIHeight: (state, action) => {
             state.formUIHeight = action.payload;
