@@ -47,6 +47,10 @@ const callList = createSlice({
         setFormState: (state, action) => {
             state.formState = action.payload;
         },
+        addRemark: (state, action) => {
+            const target_index = state.calls.findIndex(({incidentNumber}) => incidentNumber === action.payload.incidentNumber);
+            state.calls[target_index].remarks.push(action.payload.remark);
+        },
         setFormUIHeight: (state, action) => {
             state.formUIHeight = action.payload;
         }
@@ -59,6 +63,6 @@ export const selectLoadedCall = (state) => state.callList.loadedCall;
 export const selectFormState = (state) => state.callList.formState;
 export const selectFormUIHeight = (state) => state.callList.formUIHeight;
 
-export const {createCall, editCall, loadCall, setFormState, setFormUIHeight} = callList.actions;
+export const {createCall, editCall, loadCall, setFormState, addRemark, setFormUIHeight} = callList.actions;
 
 export default callList.reducer;

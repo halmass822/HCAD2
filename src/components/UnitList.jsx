@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { editUnit, selectAllUnits, setCreateOrEditUnit, setOverlayState, setTargetUnit } from "../features/unitSlice"
 import "./UnitList.css";
 import UnitRow from "./UnitRow";
-import { editCall, loadCall, selectCalls, selectLoadedCall, setFormState } from "../features/callFormSlice";
+import { addRemark, editCall, loadCall, selectCalls, selectLoadedCall, setFormState } from "../features/callFormSlice";
+import { getHHMM } from "../utils/utilityFunctions";
 
 export function UnitList() {
     const dispatch = useDispatch();
@@ -62,6 +63,13 @@ export function UnitList() {
                 incidentType: loadedCall.callType,
                 location: loadedCall.address,
                 status: "DP"
+            }));
+            dispatch(addRemark({
+                incidentNumber: loadedCall.incidentNumber,
+                remark: {
+                    text: `${targetUnitId} ADDED TO CALL`,
+                    time: getHHMM()
+                }
             }))
         }
     }
