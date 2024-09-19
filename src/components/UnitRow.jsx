@@ -17,38 +17,6 @@ export default function UnitRow(props) {
         return () => clearInterval(intervalid);
     }, [props.unitDetails.idle]);
 
-    function handleDispatch() {
-        if(loadedCall.incidentNumber) {
-            if(props.unitDetails.incidentNumber === loadedCall.incidentNumber) return; //ignore if already assigned to the call
-            dispatch(editUnit({
-                unit: props.unitDetails.unit,
-                incidentNumber: loadedCall.incidentNumber,
-                incidentType: loadedCall.callType,
-                location: loadedCall.address,
-                status: "DP"
-            }));
-            dispatch(editCall({
-                incidentNumber: loadedCall.incidentNumber,
-                assignedUnits: [...loadedCall.assignedUnits, props.unitDetails.unit]
-            }));
-        }
-    }
-
-    function handleClear() {
-        if(props.details.incidentNumber === "" && props.details.incidentType === "") return;
-        dispatch(editUnit({
-            unit: props.unitDetails.unit,
-            incidentNumber: "",
-            incidentType: "",
-            location: "",
-            status: "AV"
-        }));
-        dispatch(editCall({
-            incidentNumber: loadedCall.incidentNumber,
-            assignedUnits: loadedCall.assignedUnits.filter((x) => x !== props.unitDetails.unit)
-        }));
-    }
-
     function handleEdit() {
         dispatch(setCreateOrEditUnit("edit"));
         dispatch(setTargetUnit(props.unitDetails.unit));
@@ -65,8 +33,8 @@ export default function UnitRow(props) {
         <td className="hcad_unitrow_td_calltype">{props.unitDetails.incidentType}</td>
         <td className="hcad_unitrow_td_incnum">{props.unitDetails.incidentNumber}</td>
         <td className="hcad_unitrow_td_actions">
-            <button id="hcad_dispatchunitbtn" onClick={handleDispatch}>DP</button>
-            <button id="hcad_clearunitbtn" onClick={handleClear} >CL</button>
+            <button id="hcad_dispatchunitbtn" onClick={() => props.dispatchUnit(props.unitDetails.unit, props.unitDetails.incidentNumber)}>DP</button>
+            <button id="hcad_clearunitbtn" onClick={() => props.clearUnit(props.unitDetails.unit, props.unitDetails.incidentNumber)} >CL</button>
             <button id="hcad_editunitbtn" onClick={handleEdit} >ED</button>
         </td>
     </tr>

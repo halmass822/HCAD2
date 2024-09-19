@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux"
-import { selectAllUnits, setCreateOrEditUnit, setOverlayState, setTargetUnit } from "../features/unitSlice"
+import { editUnit, selectAllUnits, setCreateOrEditUnit, setOverlayState, setTargetUnit } from "../features/unitSlice"
 import "./UnitList.css";
 import UnitRow from "./UnitRow";
-import { loadCall, selectCalls, setFormState } from "../features/callFormSlice";
+import { editCall, loadCall, selectCalls, selectLoadedCall, setFormState } from "../features/callFormSlice";
 
 export function UnitList() {
     const dispatch = useDispatch();
     const units = useSelector(selectAllUnits);
     const calls = useSelector(selectCalls);
+    const loadedCall = useSelector(selectLoadedCall);
 
     function handleCreateUnitPress() {
         dispatch(setCreateOrEditUnit("create"));
@@ -25,6 +26,64 @@ export function UnitList() {
         }
     }
 
+    function clearUnit(targetUnitId, targetCallNumber) {
+        const targetCall = calls.find((x) => x.incidentNumber === targetCallNumber);
+        if(targetCall) dispatch(editCall({
+            incidentNumber: targetCallNumber,
+            assignedUnits: targetCall.assignedUnits.filter((x) => x.unit !== targetUnitId)
+        }));
+
+        dispatch(editUnit({
+                    unit: targetUnitId,
+                    incidentNumber: "",
+                    incidentType: "",
+                    status: "AV"
+                }));
+
+    }
+
+    function dispatchUnit(targetUnitId, oldIncidentNumber) {
+        console.log("foo");
+        if(loadedCall.incidentNumber) {
+            if(oldIncidentNumber !== "") {
+                dispatch(editCall({
+                    incidentNumber: oldIncidentNumber,
+                    assignedUnits: targetCall.assignedUnits.filter((x) => x.unit !== targetUnitId)
+                }));
+            }
+            const targetCall = calls.find((x) => x.incidentNumber === loadedCall.incidentNumber);
+            dispatch(editCall({
+                incidentNumber: loadedCall.incidentNumber,
+                assignedUnits: [...targetCall.assignedUnits, targetUnitId]
+            }));
+            dispatch(editUnit({
+                unit: targetUnitId,
+                incidentNumber: loadedCall.incidentNumber,
+                incidentType: loadedCall.callType,
+                location: loadedCall.address,
+                status: "DP"
+            }))
+        }
+    }
+
+    // if(loadedCall.incidentNumber) {
+    //     if(props.unitDetails.incidentNumber === loadedCall.incidentNumber) return; //ignore if already assigned to the call
+        
+    //     handleClear();
+
+    //     dispatch(editCall({
+    //         incidentNumber: loadedCall.incidentNumber,
+    //         assignedUnits: [...loadedCall.assignedUnits, props.unitDetails.unit]
+    //     }));
+        
+    //     dispatch(editUnit({
+    //         unit: props.unitDetails.unit,
+    //         incidentNumber: loadedCall.incidentNumber,
+    //         incidentType: loadedCall.callType,
+    //         location: loadedCall.address,
+    //         status: "DP"
+    //     }));
+
     return <div id="hcad_unitList_table_wrapper">
         <table id="hcad_unitList_table">
             <thead>
@@ -41,7 +100,7 @@ export function UnitList() {
                 </tr>
             </thead>
             <tbody>
-                {units.map((x, i) => <UnitRow key={i} unitDetails={x} handleDblClick={handleUnitRowDblClick} />)}
+                {units.map((x, i) => <UnitRow key={i} unitDetails={x} handleDblClick={handleUnitRowDblClick} dispatchUnit={dispatchUnit} clearUnit={clearUnit} />)}
             </tbody>
         </table>
     </div>
