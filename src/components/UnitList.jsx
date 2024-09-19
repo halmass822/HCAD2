@@ -30,7 +30,7 @@ export function UnitList() {
         const targetCall = calls.find((x) => x.incidentNumber === targetCallNumber);
         if(targetCall) dispatch(editCall({
             incidentNumber: targetCallNumber,
-            assignedUnits: targetCall.assignedUnits.filter((x) => x.unit !== targetUnitId)
+            assignedUnits: targetCall.assignedUnits.filter((x) => x !== targetUnitId)
         }));
 
         dispatch(editUnit({
@@ -43,7 +43,6 @@ export function UnitList() {
     }
 
     function dispatchUnit(targetUnitId, oldIncidentNumber) {
-        console.log("foo");
         if(loadedCall.incidentNumber) {
             if(oldIncidentNumber !== "") {
                 dispatch(editCall({
