@@ -34,6 +34,8 @@
 #hcad_unitList_table th, #hcad_unitList_table td {
     text-align: center;
     overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
 }
 
 .hcad_unitrow {
