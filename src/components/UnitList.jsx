@@ -101,7 +101,7 @@ export function UnitList() {
                     <th id="hcad_unitList_th_idle">Idle</th>
                     <th id="hcad_unitList_th_status">Status</th>
                     <th id="hcad_unitList_th_officer">Officer(s)</th>
-                    <th id="hcad_unitList_th_badge">Badge</th>
+                    <th id="hcad_unitList_th_badge">Badge(s)</th>
                     <th id="hcad_unitList_th_location">Location</th>
                     <th id="hcad_unitList_th_calltype">Calltype</th>
                     <th id="hcad_unitList_th_incnum">Inc. #</th>
