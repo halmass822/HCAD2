@@ -72,10 +72,15 @@
     text-align: left !important;
     overflow: ellipsis;
     text-wrap: nowrap;
+    max-width: 120px;
 }
 
 #hcad_unitList_th_badge {
-    width: 80px;
+    width: 90px;
+}
+
+.hcad_unitrow_td_badge {
+    max-width: 90px;
 }
 
 #hcad_unitList_th_calltype {
