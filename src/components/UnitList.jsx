@@ -43,17 +43,18 @@ export function UnitList() {
     }
 
     function dispatchUnit(targetUnitId, oldIncidentNumber) {
+        const oldCall = calls.find((x) => x.incidentNumber === oldIncidentNumber);
         if(loadedCall.incidentNumber) {
             if(oldIncidentNumber !== "") {
                 dispatch(editCall({
                     incidentNumber: oldIncidentNumber,
-                    assignedUnits: targetCall.assignedUnits.filter((x) => x.unit !== targetUnitId)
+                    assignedUnits: oldCall.assignedUnits.filter((x) => x !== targetUnitId)
                 }));
             }
-            const targetCall = calls.find((x) => x.incidentNumber === loadedCall.incidentNumber);
+            const newCall = calls.find((x) => x.incidentNumber === loadedCall.incidentNumber);
             dispatch(editCall({
                 incidentNumber: loadedCall.incidentNumber,
-                assignedUnits: [...targetCall.assignedUnits, targetUnitId]
+                assignedUnits: [...newCall.assignedUnits, targetUnitId]
             }));
             dispatch(editUnit({
                 unit: targetUnitId,
