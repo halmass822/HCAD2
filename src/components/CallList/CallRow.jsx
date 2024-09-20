@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getMMSS } from "../utils/utilityFunctions";
+import { getMMSS } from "../../utils/utilityFunctions";
 import { useDispatch } from "react-redux";
-import { loadCall, setFormState } from "../features/callFormSlice";
+import { loadCall, setFormState } from "../../features/callFormSlice";
 
 export default function CallRow(props) {
 

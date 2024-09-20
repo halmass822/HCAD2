@@ -1,9 +1,9 @@
 import './App.css';
-import CallForm from './components/CallForm';
-import CallList from './components/CallList';
+import CallForm from './components/CallForm/CallForm';
+import CallList from './components/CallList/CallList';
 import DisclaimerOverlay from './components/DisclaimerOverlay';
-import EditUnitOverlay from './components/EditUnitOverlay';
-import { UnitList } from './components/UnitList';
+import EditUnitOverlay from './components/UnitList/EditUnitOverlay';
+import { UnitList } from './components/UnitList/UnitList';
 
 
 function App() {

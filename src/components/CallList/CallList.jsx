@@ -1,10 +1,10 @@
 import CallRow from "./CallRow";
 
 import { useSelector } from "react-redux";
-import { selectCalls, selectFormUIHeight } from "../features/callFormSlice";
+import { selectCalls, selectFormUIHeight } from "../../features/callFormSlice";
 
 import "./CallList.css";
-import { orderCallsByPriority } from "../utils/utilityFunctions";
+import { orderCallsByPriority } from "../../utils/utilityFunctions";
 
 export default function CallList() {
     

@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
-import { editUnit, selectAllUnits, setCreateOrEditUnit, setOverlayState, setTargetUnit } from "../features/unitSlice"
+import { editUnit, selectAllUnits, setCreateOrEditUnit, setOverlayState, setTargetUnit } from "../../features/unitSlice"
 import "./UnitList.css";
 import UnitRow from "./UnitRow";
-import { addRemark, editCall, loadCall, selectCalls, selectLoadedCall, setFormState } from "../features/callFormSlice";
-import { getHHMM } from "../utils/utilityFunctions";
+import { addRemark, editCall, loadCall, selectCalls, selectLoadedCall, setFormState } from "../../features/callFormSlice";
+import { getHHMM } from "../../utils/utilityFunctions";
 
 export function UnitList() {
     const dispatch = useDispatch();
